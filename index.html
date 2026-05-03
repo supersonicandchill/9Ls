@@ -1,417 +1,1940 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
-<title>Away Game — Christian Parent’s Playbook</title>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Corley's 9Ls</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #f8f9fa; font-family: 'DM Sans', system-ui, sans-serif; color: #1a1a1a; line-height: 1.6; }
-button { cursor: pointer; }
-.progress-bar { height: 10px; background: #e9ecef; border-radius: 9999px; overflow: hidden; }
-.progress-fill { height: 100%; transition: width 0.5s ease; }
-.team-card { background: #fff; border: 1px solid #dee2e6; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); }
-.delete-btn { background: #fee2e2; color: #ef4444; border: none; width: 32px; height: 32px; border-radius: 8px; font-size: 18px; }
+/* ═══════════════════════════════════════════
+   CORLEY'S 9Ls — LEADERSHIP GROWTH COMPANION
+   ═══════════════════════════════════════════ */
+#persistDisclaimer {
+  position: fixed;
+  bottom: var(--tabs-h);
+  left: 0; right: 0;
+  background: var(--red);
+  border-top: 1px solid var(--red2);
+  padding: 6px 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  z-index: 199;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #181818;
+  --bg2:      #1c1c1c;
+  --bg3:      #222222;
+  --card:     #222222;
+  --card2:    #282828;
+  --card3:    #2e2e2e;
+  --border:   #383838;
+  --border2:  #444444;
+  --border3:  #505050;
+
+  --red:      #a01818;
+  --red2:     #c4281e;
+  --red3:     #d63828;
+  --red-glow: rgba(196,40,30,.2);
+
+  /* Gold → marquee cream/ivory */
+  --gold:     #c8c4bc;
+  --gold2:    #dedad4;
+  --gold3:    #f0ece4;
+  --gold-glow:rgba(240,236,228,.08);
+
+  --text:     #ffffff;
+  --text2:    #aaaaaa;
+  --text3:    #666666;
+  --text4:    #444444;
+
+  --radius:   10px;
+  --radius-sm:6px;
+  --tabs-h: 62px;
+  font-size: 16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--tabs-h) + 4px);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% -5%, rgba(196,40,30,.1), transparent),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HEADER ── */
+#hdr {
+  position: sticky; top: 0; z-index: 200;
+  background: linear-gradient(180deg, #080604 0%, #0d0b08 100%);
+  border-bottom: 1px solid var(--border2);
+  padding: 12px 16px 10px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  box-shadow: 0 2px 20px rgba(0,0,0,.6);
+}
+
+.logo {
+  display: flex; flex-direction: column; line-height: 1;
+  gap: 1px;
+}
+.logo-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.85rem; font-weight: 900;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
+  text-shadow: 0 0 24px rgba(196,40,30,.5);
+  line-height: 1;
+}
+.logo-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--text3);
+}
+
+.hdr-actions { display: flex; gap: 6px; align-items: center; }
+.hdr-btn {
+  width: 36px; height: 36px;
+  background: var(--card2); border: 1px solid var(--border2);
+  border-radius: var(--radius-sm); color: var(--text3);
+  font-size: 1rem; cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  transition: all .15s; font-family: inherit;
+}
+.hdr-btn:hover, .hdr-btn:active { border-color: var(--red2); color: var(--text); }
+
+/* ── BOTTOM TAB BAR ── */
+#tabBar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: var(--tabs-h); z-index: 200;
+  background: linear-gradient(180deg, #0d0b08 0%, #080604 100%);
+  border-top: 1px solid var(--border2);
+  display: flex; align-items: stretch;
+  box-shadow: 0 -4px 24px rgba(0,0,0,.7);
+}
+.tab-btn {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 3px; cursor: pointer; border: none;
+  background: transparent; color: var(--text3);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: all .2s; padding: 6px 4px;
+  position: relative;
+}
+.tab-btn::before {
+  content: '';
+  position: absolute; top: 0; left: 20%; right: 20%;
+  height: 2px; background: var(--red3);
+  border-radius: 0 0 2px 2px;
+  transform: scaleX(0); transition: transform .2s;
+}
+.tab-btn.active { color: var(--red3); }
+.tab-btn.active::before { transform: scaleX(1); }
+.tab-icon { font-size: 1.3rem; line-height: 1; }
+
+/* ── SECTIONS ── */
+.section {
+  display: none; position: relative; z-index: 1;
+  padding: 14px 14px 20px;
+  min-height: calc(100vh - 120px);
+  animation: fadeUp .25s ease forwards;
+}
+.section.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION HEADERS ── */
+.sec-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 4px;
+}
+.sec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.6rem; font-weight: 900;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text); line-height: 1;
+  margin-bottom: 14px;
+}
+.sec-row {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 14px;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px; margin-bottom: 12px;
+  position: relative; overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2), transparent);
+}
+.card2 {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px; margin-bottom: 10px;
+}
+.card3 {
+  background: var(--card3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px; margin-bottom: 8px;
+}
+
+/* card accent borders */
+.card-red  { border-left: 3px solid var(--red2); }
+.card-gold { border-left: 3px solid var(--gold2); }
+.card-green{ border-left: 3px solid var(--green2); }
+
+.card-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold2); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border2);
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; padding: 11px 20px;
+  border-radius: var(--radius-sm); font-weight: 700;
+  font-size: 0.78rem; letter-spacing: 1.5px;
+  cursor: pointer; border: none; text-transform: uppercase;
+  transition: all .15s; font-family: 'Barlow Condensed', sans-serif;
+  min-height: 44px; white-space: nowrap;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--red2) 0%, var(--red) 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(180,40,14,.35);
+}
+.btn-primary:hover, .btn-primary:active {
+  background: linear-gradient(135deg, var(--red3) 0%, var(--red2) 100%);
+  box-shadow: 0 2px 20px rgba(180,40,14,.5);
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold2) 0%, var(--gold) 100%);
+  color: #000;
+  box-shadow: 0 2px 12px rgba(180,130,26,.3);
+}
+.btn-gold:hover, .btn-gold:active {
+  background: linear-gradient(135deg, var(--gold3) 0%, var(--gold2) 100%);
+}
+.btn-ghost {
+  background: transparent; color: var(--text2);
+  border: 1px solid var(--border2);
+}
+.btn-ghost:hover, .btn-ghost:active {
+  border-color: var(--red2); color: var(--text);
+}
+.btn-green-solid {
+  background: linear-gradient(135deg, var(--green2) 0%, var(--green) 100%);
+  color: #fff;
+}
+.btn-danger {
+  background: #220000; color: #e74c3c;
+  border: 1px solid #4a0000;
+}
+.btn-danger:hover { background: #380000; }
+.btn-block { display: flex; width: 100%; margin-bottom: 8px; }
+.btn-sm { padding: 8px 14px; font-size: 0.72rem; min-height: 36px; }
+
+/* ── FORMS ── */
+input, textarea, select {
+  background: #0a0806;
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  color: var(--text); padding: 12px 14px;
+  font-size: 0.95rem; width: 100%; margin-bottom: 10px;
+  font-family: 'Barlow', sans-serif;
+  transition: border-color .15s;
+  -webkit-appearance: none;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none; border-color: var(--red2);
+  box-shadow: 0 0 0 3px rgba(212,49,26,.1);
+}
+textarea { min-height: 90px; resize: vertical; }
+label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--text3); text-transform: uppercase;
+  display: block; margin-bottom: 5px; margin-top: 8px;
+}
+select option { background: #111; }
+
+/* ── SCORE RING ── */
+.ring-wrap {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+}
+.ring-svg { transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: var(--card3); stroke-width: 5; }
+.ring-fill {
+  fill: none; stroke-width: 5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);
+}
+.ring-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 1.1rem;
+  fill: var(--text); text-anchor: middle;
+  dominant-baseline: central;
+}
+.ring-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; letter-spacing: 2px;
+  color: var(--text3); text-transform: uppercase;
+}
+
+/* ── SCORE ROWS (home + L list) ── */
+.score-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px; border-radius: var(--radius-sm);
+  cursor: pointer; transition: background .15s;
+  margin-bottom: 6px;
+}
+.score-row:hover, .score-row:active { background: var(--card2); }
+.score-icon { font-size: 1.2rem; width: 28px; text-align: center; flex-shrink: 0; }
+.score-body { flex: 1; }
+.score-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+.score-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: .5px;
+}
+.score-meta { display: flex; align-items: center; gap: 6px; }
+.score-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem; font-weight: 900; color: var(--gold2);
+}
+.score-trend { font-size: 0.9rem; font-weight: 700; }
+.score-bar { height: 4px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
+.score-fill {
+  height: 100%; border-radius: 2px;
+  transition: width .8s cubic-bezier(.4,0,.2,1);
+}
+.fill-low  { background: linear-gradient(90deg, #6b0a00, var(--red2)); }
+.fill-mid  { background: linear-gradient(90deg, var(--red2), var(--gold2)); }
+.fill-high { background: linear-gradient(90deg, var(--gold), var(--gold3)); }
+.score-tagline { font-size: 0.75rem; color: var(--text3); margin-top: 2px; }
+
+/* ── STAT BOXES ── */
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+.stat-box {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 8px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.stat-box::after {
+  content: ''; position: absolute;
+  inset: 0; background: linear-gradient(135deg, rgba(180,130,26,.04), transparent);
+}
+.stat-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.2rem; font-weight: 900; color: var(--red3);
+  line-height: 1; letter-spacing: -1px;
+}
+.stat-lbl {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem; letter-spacing: 2px;
+  color: var(--text3); text-transform: uppercase; margin-top: 4px;
+}
+
+/* ── BADGES ── */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px; border-radius: 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.badge-red   { background: rgba(180,40,14,.15); border: 1px solid rgba(180,40,14,.4); color: var(--red3); }
+.badge-gold  { background: rgba(180,130,26,.12); border: 1px solid rgba(180,130,26,.4); color: var(--gold3); }
+.badge-green { background: rgba(29,110,58,.15); border: 1px solid rgba(29,110,58,.4); color: var(--green3); }
+.badge-muted { background: var(--card3); border: 1px solid var(--border2); color: var(--text3); }
+
+/* ── FOCUS STRIP ── */
+.focus-strip {
+  background: linear-gradient(135deg, rgba(180,40,14,.12), rgba(180,40,14,.06));
+  border: 1px solid rgba(180,40,14,.3);
+  border-radius: var(--radius); padding: 12px 14px;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+}
+.focus-icon { font-size: 1.4rem; flex-shrink: 0; }
+.focus-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--red3); text-transform: uppercase; margin-bottom: 2px;
+}
+.focus-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; font-weight: 900; color: var(--text);
+}
+.focus-desc { font-size: 0.78rem; color: var(--text2); }
+
+/* ── COMMITMENT CARD ── */
+.commit-card {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px;
+  margin-bottom: 10px; position: relative;
+}
+.commit-card.active-commit { border-color: rgba(180,130,26,.4); }
+.commit-card.active-commit::before {
+  content: '';
+  position: absolute; top: 0; left: 0; bottom: 0;
+  width: 3px; background: var(--gold2);
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.commit-text { font-size: 0.92rem; color: var(--text2); line-height: 1.5; margin-bottom: 8px; }
+.commit-meta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; letter-spacing: 1px; color: var(--text3);
+}
+
+/* ── JOURNAL ENTRIES ── */
+.journal-card {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px; margin-bottom: 10px;
+  position: relative; overflow: hidden;
+}
+.journal-card.tagged { border-left: 3px solid var(--gold2); }
+.journal-meta {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;
+}
+.journal-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 1.5px; color: var(--text3);
+}
+.journal-text { font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
+.journal-connection {
+  font-size: 0.8rem; color: var(--text3); font-style: italic;
+  margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border);
+}
+.journal-del {
+  margin-left: auto; background: none; border: none;
+  color: var(--text3); font-size: 0.9rem; cursor: pointer; padding: 4px;
+}
+.journal-del:hover { color: var(--red2); }
+
+/* ── L DETAIL ── */
+.l-hero {
+  background: linear-gradient(135deg, var(--card) 0%, var(--card2) 100%);
+  border: 1px solid var(--border2); border-radius: var(--radius);
+  padding: 20px 16px; margin-bottom: 14px;
+  position: relative; overflow: hidden;
+}
+.l-hero::after {
+  content: '';
+  position: absolute; right: -20px; top: -20px;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(180,40,14,.08), transparent 70%);
+}
+.l-hero-top {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; margin-bottom: 10px;
+}
+.l-hero-left { flex: 1; }
+.l-hero-icon { font-size: 2rem; line-height: 1; margin-bottom: 4px; }
+.l-hero-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.4rem; font-weight: 900; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--text) 0%, var(--text2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.l-hero-tagline { font-size: 0.82rem; color: var(--text2); margin-top: 6px; font-style: italic; }
+.l-score-ring { flex-shrink: 0; }
+
+.principle-wrap {
+  border-left: 2px solid var(--red2);
+  padding-left: 14px; margin-bottom: 14px;
+}
+.principle-kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 3px;
+  color: var(--red2); text-transform: uppercase; margin-bottom: 6px;
+}
+.principle-text {
+  font-size: 0.88rem; color: var(--text2); line-height: 1.75; font-style: italic;
+}
+
+.in-practice-list { list-style: none; }
+.in-practice-list li {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.88rem; color: var(--text2); line-height: 1.5;
+}
+.in-practice-list li:last-child { border: none; }
+.in-practice-list li::before {
+  content: '→'; color: var(--red2);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; flex-shrink: 0; margin-top: 1px;
+}
+
+.warn-box {
+  background: linear-gradient(135deg, rgba(180,40,14,.08), transparent);
+  border: 1px solid rgba(180,40,14,.25);
+  border-radius: var(--radius); padding: 12px 14px; margin-bottom: 14px;
+}
+.warn-kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--red3); text-transform: uppercase; margin-bottom: 5px;
+}
+.warn-text { font-size: 0.85rem; color: var(--text2); line-height: 1.6; }
+
+/* ── HISTORY CHART ── */
+.history-chart {
+  display: flex; align-items: flex-end; gap: 5px;
+  height: 52px; margin-top: 10px;
+}
+.h-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.h-bar {
+  width: 100%; border-radius: 3px 3px 0 0;
+  background: var(--border2); min-height: 3px;
+  transition: background .3s;
+}
+.h-bar.recent { background: linear-gradient(180deg, var(--gold3), var(--gold)); }
+.h-bar.mid    { background: linear-gradient(180deg, var(--gold2), var(--gold)); }
+.h-bar.old    { background: var(--red); opacity: .6; }
+.h-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.52rem; color: var(--text3); letter-spacing: .5px;
+}
+
+/* ── ASSESSMENT ── */
+.assess-progress {
+  height: 3px; background: var(--card3); border-radius: 2px;
+  overflow: hidden; margin-bottom: 18px;
+}
+.assess-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red2), var(--gold2));
+  border-radius: 2px; transition: width .4s ease;
+}
+
+.assess-q-card {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 12px;
+}
+.assess-q-source {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 2px;
+  color: var(--text3); text-transform: uppercase; margin-bottom: 6px;
+}
+.assess-q-text {
+  font-size: 0.92rem; color: var(--text); line-height: 1.6;
+  margin-bottom: 14px; font-style: italic;
+}
+.rating-row { display: flex; gap: 5px; }
+.rating-btn {
+  flex: 1; padding: 10px 4px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border2); background: var(--bg3);
+  color: var(--text3); font-size: 0.65rem; cursor: pointer;
+  text-align: center; line-height: 1.3; transition: all .15s;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+  letter-spacing: .5px; min-height: 52px;
+}
+.rating-btn:hover, .rating-btn:active { border-color: var(--gold2); color: var(--text2); }
+.rating-btn.selected {
+  border-color: var(--gold2);
+  background: linear-gradient(135deg, rgba(180,130,26,.15), rgba(180,130,26,.06));
+  color: var(--gold3); font-weight: 700;
+}
+.rating-num { font-size: 1rem; font-weight: 900; display: block; }
+.rating-lbl { font-size: 0.6rem; display: block; margin-top: 2px; }
+
+/* ── CHECKIN ── */
+.checkin-status-done {
+  background: linear-gradient(135deg, rgba(29,110,58,.12), transparent);
+  border: 1px solid rgba(29,110,58,.3);
+  border-radius: var(--radius); padding: 14px; margin-bottom: 14px;
+  text-align: center;
+}
+.checkin-status-due {
+  background: linear-gradient(135deg, rgba(180,40,14,.12), transparent);
+  border: 1px solid rgba(180,40,14,.3);
+  border-radius: var(--radius); padding: 14px; margin-bottom: 14px;
+  text-align: center;
+}
+.checkin-status-kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.checkin-hist-item {
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 5px;
+}
+.checkin-hist-item:last-child { border: none; }
+
+/* ── L SELECTOR PILLS ── */
+.l-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.l-pill {
+  padding: 6px 14px; border-radius: 20px;
+  border: 1px solid var(--border2); background: var(--bg3);
+  color: var(--text3); font-size: 0.75rem; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  letter-spacing: .5px; transition: all .15s; min-height: 36px;
+}
+.l-pill:hover, .l-pill:active { border-color: var(--gold2); color: var(--text2); }
+.l-pill.active {
+  background: rgba(180,130,26,.12); border-color: var(--gold2); color: var(--gold3);
+}
+
+/* ── MY DEFINITION BLOCK ── */
+.my-def-block {
+  background: var(--bg3); border-radius: var(--radius-sm);
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.my-def-kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--gold2); text-transform: uppercase; margin-bottom: 5px;
+}
+.my-def-text { font-size: 0.88rem; color: var(--text2); line-height: 1.6; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.88); z-index: 500;
+  overflow-y: auto; padding: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+.modal-box {
+  background: var(--card); border: 1px solid var(--border2);
+  border-radius: 14px; padding: 22px 18px;
+  width: 100%; max-width: 560px; margin: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,.8);
+}
+.modal-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem; font-weight: 900; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--red3); margin-bottom: 18px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-close {
+  background: none; border: none; color: var(--text3);
+  font-size: 1.3rem; cursor: pointer; padding: 0 2px; line-height: 1;
+}
+.modal-close:hover { color: var(--text); }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center; padding: 32px 20px; color: var(--text3);
+}
+.empty-icon { font-size: 2.8rem; margin-bottom: 10px; opacity: .6; }
+.empty-text { font-size: 0.88rem; line-height: 1.6; margin-bottom: 14px; }
+
+/* ── DISCLAIMER ── */
+.disclaimer {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; letter-spacing: 1px;
+  color: var(--text4); text-align: center;
+  padding: 12px; border-top: 1px solid var(--border); margin-top: 20px;
+}
+
+/* ── RESULT ROWS ── */
+.result-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0; border-bottom: 1px solid var(--border);
+}
+.result-row:last-child { border: none; }
+.result-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 0.95rem; flex: 1;
+}
+.result-score {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 0.92rem;
+}
+.result-delta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; width: 44px; text-align: right;
+}
 </style>
 </head>
 <body>
-<div id="root"></div>
-<script type="text/babel" data-presets="react">
-const { useState } = React;
 
-// ─── STORAGE ──────────────────────────────────────────────────────────────────
-function load(key, fb) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fb; } catch { return fb; } }
-function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} }
-let _c = Date.now();
-function uid() { return "x" + (++_c).toString(36); }
+padding-bottom: calc(var(--tabs-h) + 22px);
 
-// ─── COLORS ───────────────────────────────────────────────────────────────────
-const C = {
-  bg0: "#f8f9fa", bg1: "#ffffff", bg2: "#f1f3f5", bg3: "#e9ecef",
-  border: "#dee2e6", borderHi: "#ff8c00",
-  text: "#1a1a1a", textSub: "#495057", textMuted: "#6c757d",
-  orange: "#ff8c00", green: "#00b36b"
+<!-- HEADER -->
+<div id="hdr">
+  <div class="logo">
+    <div class="logo-name">Corley's 9Ls</div>
+    <div class="logo-sub">Leadership Growth Companion</div>
+  </div>
+  <div class="hdr-actions">
+    <button class="hdr-btn" onclick="App.importData()" title="Import" style="width:auto;padding:0 10px;font-size:.65rem;letter-spacing:1px;font-family:'Barlow Condensed',sans-serif;font-weight:700;">↑ Import</button>
+<button class="hdr-btn" onclick="App.exportData()" title="Export" style="width:auto;padding:0 10px;font-size:.65rem;letter-spacing:1px;font-family:'Barlow Condensed',sans-serif;font-weight:700;">↓ Export</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="App.loadImport(event)">
+  </div>
+</div>
+
+<!-- ═══ HOME ═══ -->
+<div id="sec-home" class="section active">
+  <div id="homeWelcome"></div>
+  <div id="homeAlert"></div>
+  <div id="homeStats" class="stat-grid"></div>
+  <div id="homeFocus"></div>
+  <div class="card">
+    <div class="card-label">My 9 L's</div>
+    <div id="homeScores"></div>
+  </div>
+  <div id="homeCommit"></div>
+  <div id="homeRecent"></div>
+  <div class="disclaimer">All data is stored locally on this device and may be erased by clearing browser data.</div>
+</div>
+
+<!-- ═══ 9 L's ═══ -->
+<div id="sec-9ls" class="section">
+  <div id="lListView">
+    <div class="sec-eyebrow">The Framework</div>
+    <div class="sec-title">9 L's</div>
+    <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:16px;">Tap any L to explore its principles, review your scores, and log reflections.</p>
+    <div id="lList"></div>
+  </div>
+  <div id="lDetailView" style="display:none;">
+    <button class="btn btn-ghost btn-sm" onclick="showLList()" style="margin-bottom:16px;">← All 9 L's</button>
+    <div id="lDetailContent"></div>
+  </div>
+</div>
+
+<!-- ═══ ASSESS ═══ -->
+<div id="sec-assess" class="section">
+  <div id="assessHome">
+    <div class="sec-eyebrow">Know Yourself</div>
+    <div class="sec-title">Assess</div>
+    <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:16px;">
+      Rate your <em>actual behavior</em> over the past 2–3 weeks — not your intentions. Drawn from the work of Corley Moore, Frank Viscuso, Alan Brunacini, Anthony Kastros, and others.
+    </p>
+    <div style="background:linear-gradient(135deg,rgba(180,130,26,.08),transparent);border:1px solid rgba(180,130,26,.2);border-radius:var(--radius);padding:14px;margin-bottom:16px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:2.5px;color:var(--gold2);text-transform:uppercase;margin-bottom:6px;">Before You Start</div>
+      <div style="font-size:.88rem;color:var(--text2);line-height:1.6;">Base every answer on what you actually did. Not your best day. Not your potential. Your real, recent behavior.</div>
+    </div>
+    <div id="lastAssessNote"></div>
+    <button class="btn btn-primary btn-block" onclick="Assess.startFull()">Full Assessment — All 9 L's</button>
+    <button class="btn btn-ghost btn-block" onclick="Assess.pickSpot()">Spot Check — Single L</button>
+  </div>
+  <div id="assessActive" style="display:none;"></div>
+</div>
+
+<!-- ═══ JOURNAL ═══ -->
+<div id="sec-journal" class="section">
+  <div class="sec-row">
+    <div>
+      <div class="sec-eyebrow">Reflection</div>
+      <div class="sec-title">Journal</div>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="JournalMod.openNew()">+ Entry</button>
+  </div>
+  <div class="l-pills" id="journalFilters"></div>
+  <div id="journalList"></div>
+</div>
+
+<!-- ═══ CHECK-IN ═══ -->
+<div id="sec-checkin" class="section">
+  <div class="sec-eyebrow">Weekly</div>
+  <div class="sec-title">Check-In</div>
+  <div id="checkinContent"></div>
+</div>
+
+<!-- ═══ SETTINGS ═══ -->
+<div id="sec-settings" class="section">
+  <div class="sec-eyebrow">Profile & Data</div>
+  <div class="sec-title">Settings</div>
+  <div class="card">
+    <div class="card-label">Profile</div>
+    <label>Your Name</label>
+    <input type="text" id="sName" placeholder="Name..." onchange="Settings.save()">
+    <label>Rank / Role</label>
+    <input type="text" id="sRank" placeholder="FF / Lieutenant / Captain / BC..." onchange="Settings.save()">
+    <label>Department</label>
+    <input type="text" id="sDept" placeholder="Department..." onchange="Settings.save()">
+    <label>Years in Service</label>
+    <input type="number" id="sYears" placeholder="0" min="0" max="50" onchange="Settings.save()">
+  </div>
+  <div class="card">
+    <div class="card-label">Data</div>
+    <button class="btn btn-ghost btn-block btn-sm" onclick="App.exportData()">↓ Export All Data (JSON)</button>
+    <button class="btn btn-ghost btn-block btn-sm" onclick="App.importData()">↑ Import Data (JSON)</button>
+    <hr style="border:none;border-top:1px solid var(--border);margin:10px 0;">
+    <button class="btn btn-danger btn-block btn-sm" onclick="App.confirmReset()">↺ Reset All Data</button>
+    <div class="disclaimer">All data is stored locally on this device and may be erased by clearing browser data.</div>
+  </div>
+</div>
+
+<!-- ═══ BOTTOM TAB BAR ═══ -->
+<div id="persistDisclaimer">
+  All data is stored locally on this device only — export regularly to prevent data loss.
+</div>
+<div id="tabBar">
+  <button class="tab-btn active" onclick="Nav.go('home',this)">
+    <span class="tab-icon">🏠</span>Home
+  </button>
+  <button class="tab-btn" onclick="Nav.go('9ls',this)">
+    <span class="tab-icon">📋</span>9 L's
+  </button>
+  <button class="tab-btn" onclick="Nav.go('assess',this)">
+    <span class="tab-icon">📊</span>Assess
+  </button>
+  <button class="tab-btn" onclick="Nav.go('journal',this)">
+    <span class="tab-icon">✍</span>Journal
+  </button>
+  <button class="tab-btn" onclick="Nav.go('checkin',this)">
+    <span class="tab-icon">📅</span>Check-In
+  </button>
+  <button class="tab-btn" onclick="Nav.go('settings',this)">
+    <span class="tab-icon">⚙</span>Settings
+  </button>
+</div>
+
+<!-- ═══ MODALS ═══ -->
+
+<!-- Journal Entry -->
+<div class="modal-overlay" id="modalJournal">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span>New Journal Entry</span>
+      <button class="modal-close" onclick="closeModal('modalJournal')">✕</button>
+    </div>
+    <label>Tag an L (optional)</label>
+    <div class="l-pills" id="jLPills"></div>
+    <label>Reflection</label>
+    <textarea id="jText" placeholder="What happened? How did you lead — or fail to lead? What are you noticing about yourself?" style="min-height:120px;"></textarea>
+    <label>Connection to the 9 L's (optional)</label>
+    <textarea id="jConnect" placeholder="Make the connection explicit." style="min-height:60px;"></textarea>
+    <button class="btn btn-primary btn-block" onclick="JournalMod.save()">Save Entry</button>
+  </div>
+</div>
+
+<!-- My L Definition -->
+<div class="modal-overlay" id="modalMyL">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span id="myLTitle">My Definition</span>
+      <button class="modal-close" onclick="closeModal('modalMyL')">✕</button>
+    </div>
+    <input type="hidden" id="myLKey">
+    <label>What does this L mean to me personally?</label>
+    <textarea id="myLMeaning" placeholder="In your own words — what does this represent to you as a leader?" style="min-height:90px;"></textarea>
+    <label>How will I live this out specifically?</label>
+    <textarea id="myLImpl" placeholder="Concrete, specific behaviors. What does this look like on shift, with your crew, in your daily decisions?" style="min-height:90px;"></textarea>
+    <button class="btn btn-primary btn-block" onclick="saveMyL()">Save</button>
+  </div>
+</div>
+
+<!-- Commitment -->
+<div class="modal-overlay" id="modalCommit">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span>Set a Commitment</span>
+      <button class="modal-close" onclick="closeModal('modalCommit')">✕</button>
+    </div>
+    <p style="font-size:.85rem;color:var(--text2);line-height:1.6;margin-bottom:14px;">A commitment is a specific, observable action — not a vague intention. Make it concrete enough that you could objectively say whether you did it or not.</p>
+    <label>Which L</label>
+    <div class="l-pills" id="commitLPills"></div>
+    <label>My Commitment</label>
+    <textarea id="commitText" placeholder='e.g. "I will check in with _____ by name every shift this week and ask one real question."' style="min-height:90px;"></textarea>
+    <button class="btn btn-primary btn-block" onclick="saveCommitment()">Set Commitment</button>
+  </div>
+</div>
+
+<!-- Close Out Commitment -->
+<div class="modal-overlay" id="modalCommitClose">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span>Close Out Commitment</span>
+      <button class="modal-close" onclick="closeModal('modalCommitClose')">✕</button>
+    </div>
+    <input type="hidden" id="closingCommitId">
+    <label>What happened?</label>
+    <textarea id="commitOutcome" placeholder="Be specific. What did you actually do? What was the result?" style="min-height:90px;"></textarea>
+    <label>What did you learn?</label>
+    <textarea id="commitLearn" placeholder="What does this tell you about where you are in this L?" style="min-height:70px;"></textarea>
+    <div style="display:flex;gap:8px;margin-top:6px;">
+      <button class="btn btn-green-solid btn-sm" style="flex:1;" onclick="closeCommit('done')">Completed ✓</button>
+      <button class="btn btn-ghost btn-sm" style="flex:1;" onclick="closeCommit('partial')">Partial</button>
+      <button class="btn btn-danger btn-sm" onclick="closeCommit('missed')">Missed</button>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ═══════════════════════════════════════════
+//  CORLEY'S 9Ls — LEADERSHIP GROWTH COMPANION
+// ═══════════════════════════════════════════
+
+// ─── 9L DEFINITIONS ──────────────────────────────────────────────────────────
+
+const LS = {
+  lead: {
+    name:'Lead', icon:'🔴',
+    tagline:'Going first. Creating clarity. Taking ownership.',
+    principle:`Leadership is a verb, not a title. Corley Moore's framework begins with Lead because everything else flows from the decision to actually lead: to go first, take ownership of what's in front of you, and create clarity when others are uncertain or waiting. Frank Viscuso reinforces this in Step Up and Lead — leadership is daily, not occasional. Alan Brunacini built his entire command philosophy around decisive, forward-leaning leadership that serves people. Anthony Kastros frames it as situational awareness translated into action: you see it, you own it, you move.`,
+    inPractice:[
+      'You initiate — you don\'t wait for someone else to go first',
+      'When uncertainty or confusion hits, you step in to create clarity',
+      'You own outcomes rather than spreading blame',
+      'You lead your own character development, not just the crew\'s',
+      'You make the hard call when it needs to be made',
+      'Your leadership is consistent whether you\'re being watched or not'
+    ],
+    warningSign:'Waiting for permission. Letting problems sit. Defaulting to "that\'s above my pay grade."',
+    questions:[
+      { q:'This week, when a situation needed leadership, did you step up or wait for someone else to go first?', src:'Corley Moore — 9 L\'s' },
+      { q:'When your crew faced confusion or uncertainty, did you step in to create clarity — or did you add to the noise?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'Did you take full ownership of a negative outcome this week, or did you spread the blame?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'Under pressure — a bad call, a conflict, a hard situation — did your leadership become more disciplined or did it break down?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' },
+      { q:'Did you lead anyone this week who didn\'t have to follow you — and did they?', src:'Corley Moore — 9 L\'s' },
+      { q:'Are you actively developing yourself as a leader through deliberate study and reflection — or just accumulating time?', src:'Gordon Graham — High-Risk, Low-Frequency Events' }
+    ]
+  },
+  listen: {
+    name:'Listen', icon:'👂',
+    tagline:'Present before reactive. Hearing what isn\'t said.',
+    principle:`Listening is the foundation of influence. You cannot lead people you don't understand, and you cannot understand people you aren't truly hearing. Brunacini's customer-service model of the fire service is built on genuine attentiveness to human need. Viscuso argues that the most common leadership failure isn't a lack of knowledge — it's a failure to listen. Kastros emphasizes listening as tactical intelligence-gathering: before you can make a good decision, you must receive good information.`,
+    inPractice:[
+      'You\'re fully present — not planning your response while they\'re still talking',
+      'You ask more than you tell',
+      'You pick up on what crew members aren\'t saying',
+      'You don\'t interrupt or redirect before someone has finished',
+      'You create an environment where people feel safe being honest with you',
+      'Your crew knows that when they come to you, they will actually be heard'
+    ],
+    warningSign:'Conversations where you do most of the talking. Missing signals your crew is sending. Hearing words but not understanding people.',
+    questions:[
+      { q:'This week, did you listen to understand — or were you mainly listening to form your response?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you give at least one person your full, undivided attention — phone down, eyes on them, actually present?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'When crew members came to you with a concern, did you hear the concern behind the words — or just the surface complaint?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'In a high-pressure or high-stakes moment, did you gather information before making a decision — or did you react on instinct?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' },
+      { q:'Did you pick up on something a crew member was communicating that they didn\'t say directly?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you seek genuine feedback from your crew this week and actually hear it without getting defensive?', src:'Frank Viscuso — Step Up and Lead' }
+    ]
+  },
+  learn: {
+    name:'Learn', icon:'📖',
+    tagline:'After-action mindset. Curiosity. Never the same mistake twice.',
+    principle:`Learning is the engine behind every other L. Brunacini built a culture at Phoenix Fire around the idea that every incident, every interaction, every close call is a data point — and leaders who treat it that way grow continuously. Gordon Graham's high-risk, low-frequency framework demands that leaders study the patterns before the event, not just after. Viscuso's challenge is direct: if you're not intentionally learning, you're drifting — and drifting leaders eventually fail the people depending on them.`,
+    inPractice:[
+      'You approach mistakes with honesty, not defensiveness',
+      'You debrief genuinely — what went right, what didn\'t, and why',
+      'You invest time in deliberate study beyond required training',
+      'You apply what you learn — knowledge that doesn\'t change behavior isn\'t learning',
+      'You treat close calls as system data, not just individual error',
+      'You model intellectual humility for your crew'
+    ],
+    warningSign:'Repeating the same mistakes. Defensiveness when corrected. No intentional learning happening outside of required training.',
+    questions:[
+      { q:'Did you have a genuine after-action mindset on at least one situation this week — a call, a conversation, a decision you made?', src:'Corley Moore — 9 L\'s' },
+      { q:'When something went wrong, did you analyze the system that produced the failure — or did you just assign individual blame?', src:'Gordon Graham — High-Risk, Low-Frequency Events' },
+      { q:'Did you invest any intentional, deliberate time in learning this week — reading, studying, observing someone better than you?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'When you were corrected or criticized this week, was your first internal response curiosity or defensiveness?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'Is there a mistake or pattern you\'re still not fully owning that is limiting your growth?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you take what you learned on a previous call or interaction and apply it to a new situation this week?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' }
+    ]
+  },
+  loyal: {
+    name:'Loyal', icon:'🛡',
+    tagline:'Standing by your crew, your word, and the mission.',
+    principle:`Loyalty in the 9 L's is not blind agreement — it is consistent, trustworthy presence. Viscuso draws a clear line: real loyalty sometimes means having the hard conversation, not avoiding it. Brunacini's firefighter safety culture depends on loyalty to the mission over personal comfort. Kastros frames loyalty in command: when you disagree with a decision, how you handle that disagreement defines your character. Your crew needs to know you'll stand by them — and that standing by them means telling them the truth.`,
+    inPractice:[
+      'Your crew knows you\'ll back them — and also tell them the truth',
+      'You speak up for people when they aren\'t in the room',
+      'You keep every commitment you make, including small ones',
+      'You stay loyal to the mission — not just what\'s comfortable',
+      'When you have concerns about someone, you go to them first, not to others',
+      'You don\'t change your position just because the room changes'
+    ],
+    warningSign:'Talking about people behind their backs. Breaking small commitments. Loyalty to comfort over conviction.',
+    questions:[
+      { q:'Did you keep every commitment you made this week — the small ones as much as the big ones?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you speak up for a crew member who wasn\'t present to advocate for themselves?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'When you disagreed with a decision from above, did you express it through the right channels — or did you undermine it quietly?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' },
+      { q:'Are you being loyal to the safety culture and the mission — or to your own comfort and the path of least resistance?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'When a crew member needed honest feedback, did you give it — or did you protect the relationship by staying silent?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'Did you stay consistent — same standards, same values — whether you were being observed or not?', src:'Corley Moore — 9 L\'s' }
+    ]
+  },
+  legacy: {
+    name:'Legacy', icon:'🏛',
+    tagline:'Who are you building? What remains when you\'re gone?',
+    principle:`Every shift, you are building something — or you are tearing it down. Brunacini asked the question that shaped a generation of fire service leaders: what kind of organization are we going to be? Viscuso frames legacy in terms of daily choice — the culture you create isn't the result of a big decision, it's the accumulation of small ones. Kastros challenges leaders to think about the firefighters who will come after them: what are they inheriting? Moore's framework places Legacy here because leadership that doesn't build for the future is just management.`,
+    inPractice:[
+      'You invest deliberately in someone\'s development — not accidentally',
+      'You think about the culture you\'re creating, shift by shift',
+      'You ask yourself: what are newer firefighters inheriting from my example?',
+      'You mentor without needing credit for it',
+      'You make the station, the culture, and the craft better than you found it',
+      'Your standard is what you do when it costs you something'
+    ],
+    warningSign:'Only thinking about today. Using people instead of developing them. Culture on your crew getting worse, not better.',
+    questions:[
+      { q:'Did you intentionally invest in someone\'s development this week — on purpose, not by accident?', src:'Corley Moore — 9 L\'s' },
+      { q:'Is the culture on your crew measurably better because of your presence — or are you just surviving it?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'If the newest person on your crew described what your example teaches them about leadership, what would they say?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'Are you building people who will outlast you — or are you building dependency on yourself?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' },
+      { q:'What are you doing today that will still matter to this organization five years from now?', src:'Corley Moore — 9 L\'s' },
+      { q:'When you\'re gone from this station or this position, what will the culture say about the leader you were?', src:'Alan Brunacini — Essentials of Fire Fighting' }
+    ]
+  },
+  lift: {
+    name:'Lift', icon:'⬆',
+    tagline:'Elevating the people around you. Their wins are yours.',
+    principle:`Lifting goes beyond not tearing people down — it is an active commitment to building them up. Viscuso's leadership model is explicit: you lift people by naming their specific contributions, not with generic praise. Brunacini's humanistic command philosophy argues that when people feel seen and valued, they bring their full capability to the mission. Kastros points out that leaders who lift create the conditions for people to exceed their own expectations. Moore closes the loop: your crew's wins are your wins.`,
+    inPractice:[
+      'You catch people doing things right and name it specifically',
+      'You create opportunities for crew members to grow and be seen',
+      'You celebrate others\' wins as genuinely as your own',
+      'You advocate for crew members with people above you',
+      'You push people toward their potential, even when they\'re comfortable',
+      'Your affirmation is specific and earned — not empty'
+    ],
+    warningSign:'Only noticing when people fall short. Never advocating upward for your crew. People around you are stagnating.',
+    questions:[
+      { q:'Did you specifically recognize someone\'s good work this week — with specific detail, not generic praise?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you do anything concrete to elevate a crew member\'s confidence, skill, or opportunity?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'Did you communicate expectations clearly enough that someone on your crew could actually succeed and know they had?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'Did you actively advocate upward for a crew member this week — push for their recognition, their development, their opportunity?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' },
+      { q:'Is anyone measurably better this week because of something you invested in them?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you push anyone toward a next level of responsibility they haven\'t reached yet?', src:'Frank Viscuso — Step Up and Lead' }
+    ]
+  },
+  love: {
+    name:'Love', icon:'❤',
+    tagline:'Genuine care for the people you serve with. Not soft — human.',
+    principle:`Love in Moore's framework is one of the hardest things to sustain in leadership — because it requires showing up for people when it's inconvenient, when you're exhausted, when they're difficult. Brunacini built Phoenix Fire's identity around the idea that firefighters serve customers, and that service flows from genuine care. Gordon Graham's wellbeing research is clear: the leaders who take care of their own crews also take care of themselves. You cannot fake this long-term. The crew always knows.`,
+    inPractice:[
+      'You check in on people genuinely — not as a task, but as a human being',
+      'You notice when something is different about a crew member and respond to it',
+      'You know what\'s going on in your crew\'s lives beyond the station',
+      'Your care is consistent whether the shift is slow or overwhelming',
+      'You take care of your own wellbeing as a foundation for caring for others',
+      'Your crew would describe you as someone who actually gives a damn'
+    ],
+    warningSign:'Treating crew members as functions rather than people. Never asking about their lives. Missing signals that someone is struggling.',
+    questions:[
+      { q:'Did you check in on someone this week in a way that was genuine — not in passing, not as a checkbox?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you notice when a crew member wasn\'t themselves — and did you do anything about it?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'Do the people on your crew know — not just believe, but actually know — that you care about them as people?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'Did you take care of your own mental and physical wellbeing this week as a foundation for caring for your crew?', src:'Gordon Graham — High-Risk, Low-Frequency Events' },
+      { q:'If a struggling crew member were going to reach out to one person, would they reach out to you — and why or why not?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you treat everyone on your crew with the same dignity and attentiveness you\'d want from your own leadership?', src:'Alan Brunacini — Essentials of Fire Fighting' }
+    ]
+  },
+  leverage: {
+    name:'Leverage', icon:'⚙',
+    tagline:'Multiplying impact through strengths and relationships.',
+    principle:`Leverage is strategic leadership intelligence. The most effective leaders don't just work hard — they work with awareness of how to multiply their impact. Kastros frames leverage as the mark of a mature leader: you know what you're good at, you know what your crew is good at, and you deploy those strengths intentionally. Brunacini's ICS philosophy is leverage in action — every resource has a function, and the best commanders get the most out of every resource. Viscuso adds the relational dimension: build the relationships before you need them.`,
+    inPractice:[
+      'You know your crew members\' strengths and deploy them intentionally',
+      'You build relationships before you need them',
+      'You identify where you\'re carrying weight someone else could handle better',
+      'You create conditions for your crew to contribute at their highest level',
+      'You think about who has influence on the people you\'re developing',
+      'You work smart — not just hard'
+    ],
+    warningSign:'Carrying everything yourself. Not knowing your crew\'s strengths. Isolated — no relational investment beyond your immediate circle.',
+    questions:[
+      { q:'Did you intentionally deploy a crew member\'s specific strength in a way that benefited the crew this week?', src:'Corley Moore — 9 L\'s' },
+      { q:'Are you building relationships in your department that serve the mission long-term — or only relationships that are already comfortable?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'Where are you carrying weight that someone else could handle better — and what is that costing your crew?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' },
+      { q:'Did you use your position, relationships, or resources to multiply your impact beyond what you could do alone this week?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'Are you creating conditions for your crew to operate at their highest capability — or are you unconsciously limiting them?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you identify and close a gap between where your crew is and what they\'re capable of?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' }
+    ]
+  },
+  last: {
+    name:'Last', icon:'🏁',
+    tagline:'Finishing what you start. Follow-through. No half-measures.',
+    principle:`Last is the L that separates intention from execution. Finishing is rare. Moore closes the 9 L's here because follow-through is the proof of everything that came before it. Viscuso makes it plain: your crew doesn't evaluate you on your intentions — they evaluate you on what you actually did. Brunacini's operational model demands it: the incident doesn't end until every task is closed out. Kastros frames it under pressure: your real character shows when following through costs you something and you do it anyway.`,
+    inPractice:[
+      'You finish what you start — the small things as much as the big ones',
+      'Your crew can count on commitments you make as things that will actually happen',
+      'You don\'t let difficult or uncomfortable tasks become reasons to stop',
+      'You follow up on conversations, commitments, and expectations you\'ve set',
+      'You close the loop — every time',
+      'Your reputation is built on finishing, not starting'
+    ],
+    warningSign:'A trail of half-finished things. Crew members having to remind you of your own commitments. Great starts, poor finishes.',
+    questions:[
+      { q:'Did you complete everything you committed to this week — or did something fall through?', src:'Corley Moore — 9 L\'s' },
+      { q:'Is there a conversation, a development plan, or a promise you started and have been avoiding finishing?', src:'Frank Viscuso — Step Up and Lead' },
+      { q:'Did you close the loop on every expectation you set — for yourself and for your crew?', src:'Alan Brunacini — Essentials of Fire Fighting' },
+      { q:'Under fatigue and pressure this week, did your follow-through hold — or did it crack when it cost you something?', src:'Anthony Kastros — Mastering the Fire Service Assessment Center' },
+      { q:'If your crew rated your reputation for finishing what you start, what number would they give you honestly?', src:'Corley Moore — 9 L\'s' },
+      { q:'Did you follow through on the safety-critical tasks — the ones nobody was checking on — not just the visible ones?', src:'Gordon Graham — High-Risk, Low-Frequency Events' }
+    ]
+  }
 };
 
-// ─── VIRTUES (Complete) ───────────────────────────────────────────────────────
-const VIRTUES = {
-  L: { key:"L", label:"Love", icon:"❤️", tagline:"Others-first in a me-first culture", color:"#ff4d4d", bg:"#fff0f0", border:"#ff8c00",
-       scoreMeaning: "0=Never • 1=Rarely • 2=Sometimes • 3=Consistently puts others first",
-       strong: ["Celebrates teammates' success", "Shows genuine kindness", "Puts team above self"],
-       weak:   ["Selfish on and off the field", "Dismisses or ignores teammates", "Only cheers for own highlights"],
-       develop: ["After each game, name one teammate who helped you win", "Do one act of encouragement before you leave the field", "Pray: 'Lord, help me love my teammates the way You love me'"] },
-  P: { key:"P", label:"Peace", icon:"☮️", tagline:"Calm anchored in Christ", color:"#00b36b", bg:"#f0fff4", border:"#ff8c00",
-       scoreMeaning: "0=Constant anxiety • 1=Occasional calm • 2=Usually calm • 3=Peace that guards the heart",
-       strong: ["Stays composed under pressure", "Calms teammates in tense moments", "Bounces back quickly from mistakes"],
-       weak:   ["Anxious or panicked when things go wrong", "Spreads tension to teammates", "Dwells on errors during play"],
-       develop: ["Practice three slow breaths before any big moment", "Write down one worry this week and give it to God in prayer", "Memorize Phil. 4:7 — let it anchor your pregame routine"] },
-  S: { key:"S", label:"Self-Control", icon:"🛡️", tagline:"Responding instead of reacting", color:"#0077cc", bg:"#f0f8ff", border:"#ff8c00",
-       scoreMeaning: "0=Frequent outbursts • 1=Improving • 2=Usually controlled • 3=Strong self-discipline",
-       strong: ["Responds to bad calls without blowing up", "Keeps emotions in check under provocation", "Leads by example in discipline"],
-       weak:   ["Frequent outbursts or meltdowns", "Argues with officials or coaches", "Lets frustration hurt performance"],
-       develop: ["Identify your #1 trigger — name it, then make a plan for it", "After a bad call, count to 5 before you react", "Ask a trusted teammate to hold you accountable this week"] },
-  G: { key:"G", label:"Gentleness", icon:"🌿", tagline:"Strength under control", color:"#9c4dff", bg:"#f8f0ff", border:"#ff8c00",
-       scoreMeaning: "0=Often harsh • 1=Sometimes gentle • 2=Usually gentle • 3=Strength under control",
-       strong: ["Encourages struggling teammates", "Competes hard without being cruel", "Uses words that build up, not tear down"],
-       weak:   ["Often harsh or cutting with words", "Intimidates or belittles others", "Confuses meanness with toughness"],
-       develop: ["Before criticizing a teammate, ask: 'Is this kind AND true?'", "Find one struggling player this week and intentionally encourage them", "Journal: where did strength AND gentleness show up together today?"] },
-  H: { key:"H", label:"Humility", icon:"🙏", tagline:"Playing from identity, not for identity", color:"#ff8c00", bg:"#fff8f0", border:"#ff8c00",
-       scoreMeaning: "0=Very prideful • 1=Occasional humility • 2=Growing humility • 3=Consistently humble",
-       strong: ["Credits teammates and coaches for success", "Accepts coaching without defensiveness", "Secure enough to celebrate others"],
-       weak:   ["Takes credit, deflects blame", "Gets defensive when corrected", "Needs to be the star"],
-       develop: ["After your next win, publicly credit two specific teammates", "When corrected by a coach, respond: 'Thank you, I'll work on that'", "Ask yourself: 'Am I playing TO prove something or FROM knowing who I am?'"] },
-  Gr: { key:"Gr", label:"Gratitude", icon:"🙌", tagline:"Thankful in all circumstances", color:"#ffaa00", bg:"#fffdf0", border:"#ff8c00",
-       scoreMeaning: "0=Very entitled • 1=Occasional thanks • 2=Usually grateful • 3=Thankful in all circumstances",
-       strong: ["Thanks coaches, officials, and opponents", "Grateful for the opportunity to compete", "Positive attitude win or lose"],
-       weak:   ["Entitled attitude about playing time or roles", "Rarely thanks others", "Complains about conditions, calls, or teammates"],
-       develop: ["Start every practice with one thing you're grateful for about this team", "Write a one-line thank-you to a coach or teammate this week", "After a loss, find three genuine things to be thankful for before you leave"] },
-  J: { key:"J", label:"Joy", icon:"🎉", tagline:"Delight that outlasts the score", color:"#ff6600", bg:"#fff4f0", border:"#ff8c00",
-       scoreMeaning: "0=Joy is gone • 1=Rare joy • 2=Usually joyful • 3=Consistent delight",
-       strong: ["Genuine enjoyment of the game", "Joy that doesn't depend on the scoreboard", "Lifts the energy of those around them"],
-       weak:   ["Only happy when winning", "Drains team energy with negativity", "Has lost the love of the game"],
-       develop: ["Recall why you first fell in love with this sport — write it down", "Find one moment in each practice to just enjoy the game", "Remind yourself: the scoreboard is temporary, but who you're becoming is not"] }
-};
+const L_KEYS = ['lead','listen','learn','loyal','legacy','lift','love','leverage','last'];
+const RATING = ['Not yet','Rarely','Sometimes','Often','Consistently'];
 
-const SCORE_LABELS = ["Missing", "Emerging", "Developing", "Strong"];
+// ─── STATE ───────────────────────────────────────────────────────────────────
 
-// ─── HELPERS ──────────────────────────────────────────────────────────────────
-function getCombo(scores) {
-  const strong = Object.values(scores).filter(v => v === 3).length;
-  const developing = Object.values(scores).filter(v => v >= 2).length;
-  const avg = (Object.values(scores).reduce((a,b) => a + b, 0) / 7).toFixed(1);
-
-  if (strong >= 5) return { label: "Kingdom Competitor", icon: "🏆", desc: `Avg ${avg}/3`, color: C.orange, progress: 95 };
-  if (developing >= 6) return { label: "Strong Disciple", icon: "🌟", desc: `Avg ${avg}/3`, color: C.green, progress: 85 };
-  return { label: "Developing Disciple", icon: "🌱", desc: `Avg ${avg}/3`, color: "#fd7e14", progress: Math.round(developing / 7 * 100) };
-}
-
-function calculateTeamProgress(athletes) {
-  if (athletes.length === 0) return { avgScore: "0.0", strongPercent: 0, totalAthletes: 0 };
-  let totalScore = 0, totalStrong = 0;
-  const totalVirtues = athletes.length * 7;
-
-  athletes.forEach(a => {
-    const scores = Object.values(a.scores || {});
-    totalScore += scores.reduce((a,b) => a + b, 0);
-    totalStrong += scores.filter(v => v === 3).length;
+function defaultState() {
+  const ls = {};
+  L_KEYS.forEach(k => {
+    ls[k] = { scores:[], myMeaning:'', myImpl:'', commitments:[] };
   });
+  return {
+    profile: { name:'', rank:'', dept:'', years:'' },
+    ls,
+    journal: [],
+    checkIns: []
+  };
+}
+let S = {};
 
-  const avgScore = (totalScore / totalVirtues).toFixed(1);
-  const strongPercent = Math.round((totalStrong / totalVirtues) * 100);
+// ─── APP ─────────────────────────────────────────────────────────────────────
 
-  return { avgScore, strongPercent, totalAthletes: athletes.length };
+const App = {
+  init() {
+    this.load();
+    Home.render();
+    renderLList();
+    JournalMod.renderFilters();
+    JournalMod.render();
+    CheckIn.render();
+    Settings.populate();
+    updateLastAssessNote();
+  },
+  load() {
+    try {
+      const raw = localStorage.getItem('9ls_v3');
+      if (raw) S = deepMerge(defaultState(), JSON.parse(raw));
+      else S = defaultState();
+    } catch(e) { S = defaultState(); }
+  },
+  save() { localStorage.setItem('9ls_v3', JSON.stringify(S)); },
+  exportData() {
+    const b = new Blob([JSON.stringify(S,null,2)], {type:'application/json'});
+    const u = URL.createObjectURL(b);
+    const a = document.createElement('a');
+    a.href = u; a.download = '9ls_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click(); URL.revokeObjectURL(u);
+  },
+  importData() { document.getElementById('importFile').click(); },
+  loadImport(e) {
+    const file = e.target.files[0]; if (!file) return;
+    const r = new FileReader();
+    r.onload = ev => {
+      try {
+        const d = JSON.parse(ev.target.result);
+        if (!d.ls) { alert('Invalid file.'); return; }
+        if (!confirm('Replace all current data?')) return;
+        S = deepMerge(defaultState(), d);
+        App.save(); App.init(); Nav.go('home', document.querySelector('.tab-btn'));
+        alert('Data imported.');
+      } catch { alert('Could not parse file.'); }
+    };
+    r.readAsText(file); e.target.value = '';
+  },
+  confirmReset() {
+    if (confirm('Reset ALL data? Cannot be undone.') && confirm('Are you absolutely sure?')) {
+      localStorage.removeItem('9ls_v3');
+      S = defaultState(); App.save(); App.init();
+      Nav.go('home', document.querySelector('.tab-btn'));
+    }
+  }
+};
+
+function deepMerge(target, source) {
+  const out = Object.assign({}, target);
+  for (const k in source) {
+    if (source[k] && typeof source[k] === 'object' && !Array.isArray(source[k]))
+      out[k] = deepMerge(target[k] || {}, source[k]);
+    else out[k] = source[k];
+  }
+  return out;
 }
 
-// ─── MODALS ───────────────────────────────────────────────────────────────────
-function Modal({title, onClose, children}) {
-  return (
-    <div style={{position:"fixed", inset:0, background:"rgba(0,0,0,0.75)", zIndex:500, display:"flex", alignItems:"center", justifyContent:"center"}} onClick={e=>e.target===e.currentTarget&&onClose()}>
-      <div style={{background:"#fff", borderRadius:16, width:"92%", maxWidth:720, maxHeight:"92vh", overflow:"hidden", boxShadow:"0 25px 70px rgba(0,0,0,0.25)"}}>
-        <div style={{padding:"18px 24px", borderBottom:"1px solid #dee2e6", display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-          <span style={{fontSize:21, fontWeight:800, color:C.orange}}>{title}</span>
-          <button onClick={onClose} style={{fontSize:24, background:"none", border:"none", color:"#666"}}>✕</button>
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+const Nav = {
+  go(tab, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    const sec = document.getElementById('sec-' + tab);
+    if (sec) sec.classList.add('active');
+    if (btn) btn.classList.add('active');
+    window.scrollTo(0,0);
+    if (tab === 'home') Home.render();
+    if (tab === '9ls') { showLList(); }
+    if (tab === 'journal') { JournalMod.render(); }
+    if (tab === 'checkin') CheckIn.render();
+    if (tab === 'settings') Settings.populate();
+  }
+};
+
+// ─── SCORING UTILS ───────────────────────────────────────────────────────────
+
+const score = k => {
+  const sc = S.ls[k].scores;
+  return sc.length ? sc[sc.length-1].score : null;
+};
+const scorePct = s => s === null ? 0 : (s/5)*100;
+const fillClass = s => {
+  if (s === null) return 'fill-low';
+  if (s < 2.5) return 'fill-low';
+  if (s < 3.5) return 'fill-mid';
+  return 'fill-high';
+};
+const ringColor = s => {
+  if (s === null) return '#333028';
+  if (s < 2.5) return '#d4311a';
+  if (s < 3.5) return '#d4a028';
+  return '#249a4e';
+};
+const trendArrow = k => {
+  const sc = S.ls[k].scores;
+  if (sc.length < 2) return '—';
+  const d = sc[sc.length-1].score - sc[sc.length-2].score;
+  return d > .2 ? '↑' : d < -.2 ? '↓' : '→';
+};
+const trendColor = a => a==='↑'?'var(--green3)':a==='↓'?'var(--red3)':'var(--text3)';
+const weakestL = () => {
+  const scored = L_KEYS.filter(k => score(k) !== null);
+  if (!scored.length) return null;
+  return scored.reduce((a,b) => score(a) < score(b) ? a : b);
+};
+const strongestL = () => {
+  const scored = L_KEYS.filter(k => score(k) !== null);
+  if (!scored.length) return null;
+  return scored.reduce((a,b) => score(a) > score(b) ? a : b);
+};
+const overallAvg = () => {
+  const scored = L_KEYS.filter(k => score(k) !== null);
+  if (!scored.length) return null;
+  return scored.reduce((a,k) => a + score(k), 0) / scored.length;
+};
+const avgQ = r => r.reduce((a,b)=>a+b,0)/r.length;
+
+// Ring SVG builder
+function ringHTML(val, size=54, sw=5) {
+  const r = (size-sw*2)/2;
+  const circ = 2*Math.PI*r;
+  const pct = val === null ? 0 : (val/5);
+  const dash = circ * pct;
+  const clr = ringColor(val);
+  const label = val !== null ? val.toFixed(1) : '—';
+  return `<svg width="${size}" height="${size}" class="ring-svg">
+    <circle class="ring-bg" cx="${size/2}" cy="${size/2}" r="${r}" stroke-width="${sw}"/>
+    <circle class="ring-fill" cx="${size/2}" cy="${size/2}" r="${r}" stroke="${clr}"
+      stroke-width="${sw}" stroke-dasharray="${dash} ${circ}"
+      stroke-dashoffset="0" stroke-linecap="round"/>
+    <text class="ring-num" x="${size/2}" y="${size/2}" style="fill:${clr};font-size:${size*.22}px;">${label}</text>
+  </svg>`;
+}
+
+// ─── HOME ────────────────────────────────────────────────────────────────────
+
+const Home = {
+  render() {
+    this.welcome();
+    this.alert();
+    this.stats();
+    this.focus();
+    this.scores();
+    this.commit();
+    this.recent();
+  },
+  welcome() {
+    const name = S.profile.name;
+    const avg = overallAvg();
+    const totalAssess = L_KEYS.reduce((a,k)=>a+S.ls[k].scores.length,0);
+    document.getElementById('homeWelcome').innerHTML = `
+      <div style="margin-bottom:14px;">
+        <div class="sec-eyebrow">Leadership Growth</div>
+        <div class="sec-title">${name ? esc(name) : 'My Dashboard'}</div>
+        ${avg !== null
+          ? `<div style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+              ${ringHTML(avg, 48, 5)}
+              <div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:2px;color:var(--text3);text-transform:uppercase;">Overall Average</div>
+                <div style="font-size:.82rem;color:var(--text2);">${totalAssess} assessment${totalAssess!==1?'s':''} logged</div>
+              </div>
+             </div>`
+          : `<p style="font-size:.88rem;color:var(--text2);margin-top:4px;">Start with your first assessment to begin tracking growth.</p>`
+        }
+      </div>`;
+  },
+  alert() {
+    const el = document.getElementById('homeAlert');
+    const last = S.checkIns.length ? S.checkIns[S.checkIns.length-1] : null;
+    const due = !last || new Date(last.date) < new Date(Date.now()-7*864e5);
+    el.innerHTML = due
+      ? `<div class="checkin-status-due" style="display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;">
+           <div>
+             <div class="checkin-status-kicker" style="color:var(--red3);">Weekly Check-In Due</div>
+             <div style="font-size:.82rem;color:var(--text2);">${last?'Last: '+new Date(last.date).toLocaleDateString():'No check-ins yet'}</div>
+           </div>
+           <button class="btn btn-primary btn-sm" onclick="Nav.go('checkin',document.querySelectorAll('.tab-btn')[4])">Go →</button>
+         </div>`
+      : `<div class="checkin-status-done">
+           <div class="checkin-status-kicker" style="color:var(--green3);">Check-In Complete ✓</div>
+           <div style="font-size:.78rem;color:var(--text2);">${new Date(last.date).toLocaleDateString()}</div>
+         </div>`;
+  },
+  stats() {
+    const totalAssess = L_KEYS.reduce((a,k)=>a+S.ls[k].scores.length,0);
+    const journalCount = S.journal.length;
+    const commitsDone = L_KEYS.reduce((a,k)=>a+(S.ls[k].commitments||[]).filter(c=>c.status==='done').length,0);
+    document.getElementById('homeStats').innerHTML = `
+      <div class="stat-box"><div class="stat-num">${totalAssess}</div><div class="stat-lbl">Assessments</div></div>
+      <div class="stat-box"><div class="stat-num">${journalCount}</div><div class="stat-lbl">Journal</div></div>
+      <div class="stat-box"><div class="stat-num">${commitsDone}</div><div class="stat-lbl">Kept</div></div>`;
+  },
+  focus() {
+    const el = document.getElementById('homeFocus');
+    const weak = weakestL(); const strong = strongestL();
+    if (!weak) { el.innerHTML=''; return; }
+    const ws = score(weak), ss = strong ? score(strong) : null;
+    el.innerHTML = `
+      <div class="focus-strip">
+        <div class="focus-icon">${LS[weak].icon}</div>
+        <div style="flex:1;">
+          <div class="focus-label">Focus Trait</div>
+          <div class="focus-name">${LS[weak].name}</div>
+          <div class="focus-desc">${LS[weak].tagline}</div>
         </div>
-        <div style={{padding:24, overflowY:"auto", maxHeight:"78vh"}}>{children}</div>
+        <div style="text-align:right;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:900;color:var(--red3);">${ws!==null?ws.toFixed(1):'—'}</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:.55rem;letter-spacing:1.5px;color:var(--text3);">/ 5.0</div>
+        </div>
+      </div>
+      ${strong && strong!==weak?`
+      <div class="focus-strip" style="background:linear-gradient(135deg,rgba(29,110,58,.1),rgba(29,110,58,.05));border-color:rgba(29,110,58,.25);">
+        <div class="focus-icon">${LS[strong].icon}</div>
+        <div style="flex:1;">
+          <div class="focus-label" style="color:var(--green3);">Strongest L</div>
+          <div class="focus-name">${LS[strong].name}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:900;color:var(--green3);">${ss!==null?ss.toFixed(1):'—'}</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:.55rem;letter-spacing:1.5px;color:var(--text3);">/ 5.0</div>
+        </div>
+      </div>`:``}`;
+  },
+  scores() {
+    const el = document.getElementById('homeScores');
+    const scored = L_KEYS.filter(k => score(k) !== null);
+    if (!scored.length) {
+      el.innerHTML = `<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-text">No scores yet.<br>Take your first assessment to see your 9 L's mapped out.</div><button class="btn btn-primary btn-sm" onclick="Nav.go('assess',document.querySelectorAll('.tab-btn')[2])">Start Assessment</button></div>`;
+      return;
+    }
+    el.innerHTML = L_KEYS.map(k => {
+      const s = score(k); const arrow = trendArrow(k);
+      return `<div class="score-row" onclick="openLDetail('${k}')">
+        <div class="score-icon">${LS[k].icon}</div>
+        <div class="score-body">
+          <div class="score-header">
+            <span class="score-name">${LS[k].name}</span>
+            <div class="score-meta">
+              ${s!==null?`<span class="score-val">${s.toFixed(1)}/5</span>`:`<span style="color:var(--text3);font-family:'Barlow Condensed',sans-serif;font-size:.8rem;">Not assessed</span>`}
+              ${s!==null?`<span class="score-trend" style="color:${trendColor(arrow)}">${arrow}</span>`:''}
+            </div>
+          </div>
+          <div class="score-bar"><div class="score-fill ${fillClass(s)}" style="width:${scorePct(s)}%"></div></div>
+        </div>
+      </div>`;
+    }).join('');
+  },
+  commit() {
+    const el = document.getElementById('homeCommit');
+    const active = [];
+    L_KEYS.forEach(k => (S.ls[k].commitments||[]).filter(c=>c.status==='active').forEach(c=>active.push({...c,lKey:k})));
+    if (!active.length) {
+      el.innerHTML = `<div class="card2" style="text-align:center;padding:16px;">
+        <div style="font-size:.85rem;color:var(--text3);margin-bottom:10px;">No active commitment.</div>
+        <button class="btn btn-ghost btn-sm" onclick="openCommitModal()">+ Set a Commitment</button>
+      </div>`;
+      return;
+    }
+    el.innerHTML = `<div class="card"><div class="card-label">Active Commitment${active.length>1?'s':''}</div>
+      ${active.map(c=>`<div class="commit-card active-commit">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+          <span class="badge badge-gold">${LS[c.lKey].name}</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:.62rem;color:var(--text3);">${new Date(c.created).toLocaleDateString()}</span>
+        </div>
+        <div class="commit-text">${esc(c.text)}</div>
+        <button class="btn btn-ghost btn-sm" onclick="openCommitClose('${c.id}')" style="margin-top:8px;">Close Out →</button>
+      </div>`).join('')}
+      <button class="btn btn-ghost btn-sm btn-block" onclick="openCommitModal()" style="margin-top:4px;">+ Add Another</button>
+    </div>`;
+  },
+  recent() {
+    const el = document.getElementById('homeRecent');
+    const recent = [...S.journal].reverse().slice(0,3);
+    if (!recent.length) { el.innerHTML=''; return; }
+    el.innerHTML = `<div class="card"><div class="card-label">Recent Journal</div>
+      ${recent.map(e=>`<div style="padding:8px 0;border-bottom:1px solid var(--border);">
+        <div style="display:flex;gap:6px;align-items:center;margin-bottom:4px;">
+          ${e.lKey?`<span class="badge badge-gold">${LS[e.lKey].name}</span>`:''}
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:.62rem;color:var(--text3);">${new Date(e.date).toLocaleDateString()}</span>
+        </div>
+        <div style="font-size:.88rem;color:var(--text2);line-height:1.5;">${esc(e.entry).slice(0,110)}${e.entry.length>110?'…':''}</div>
+      </div>`).join('')}
+      <button class="btn btn-ghost btn-sm btn-block" onclick="Nav.go('journal',document.querySelectorAll('.tab-btn')[3])" style="margin-top:10px;">All Entries →</button>
+    </div>`;
+  }
+};
+
+// ─── 9L LIST + DETAIL ────────────────────────────────────────────────────────
+
+function renderLList() {
+  document.getElementById('lList').innerHTML = L_KEYS.map(k => {
+    const s = score(k); const arrow = trendArrow(k);
+    return `<div class="score-row" style="background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;padding:14px 12px;" onclick="openLDetail('${k}')">
+      <div class="score-icon" style="font-size:1.4rem;">${LS[k].icon}</div>
+      <div class="score-body">
+        <div class="score-header">
+          <span class="score-name" style="font-size:1.1rem;">${LS[k].name}</span>
+          <div class="score-meta">
+            ${s!==null?`<span class="score-val" style="font-size:.95rem;">${s.toFixed(1)}/5</span>`:`<span style="color:var(--text3);font-family:'Barlow Condensed',sans-serif;font-size:.78rem;">Not assessed</span>`}
+            ${s!==null?`<span class="score-trend" style="color:${trendColor(arrow)};">${arrow}</span>`:''}
+          </div>
+        </div>
+        <div class="score-tagline">${LS[k].tagline}</div>
+        <div class="score-bar" style="margin-top:6px;"><div class="score-fill ${fillClass(s)}" style="width:${scorePct(s)}%"></div></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.58rem;color:var(--text3);margin-top:3px;">${S.ls[k].scores.length} assessment${S.ls[k].scores.length!==1?'s':''} · ${(S.ls[k].commitments||[]).filter(c=>c.status==='active').length} active commitment${(S.ls[k].commitments||[]).filter(c=>c.status==='active').length!==1?'s':''}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showLList() {
+  document.getElementById('lListView').style.display='block';
+  document.getElementById('lDetailView').style.display='none';
+  renderLList();
+}
+
+function openLDetail(k) {
+  document.getElementById('lListView').style.display='none';
+  document.getElementById('lDetailView').style.display='block';
+  const tab = document.querySelectorAll('.tab-btn')[1];
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-9ls').classList.add('active');
+  if(tab) tab.classList.add('active');
+  renderLDetail(k);
+  window.scrollTo(0,0);
+}
+
+function renderLDetail(k) {
+  const def = LS[k]; const data = S.ls[k];
+  const s = score(k); const arrow = trendArrow(k);
+  const hist = data.scores.slice(-10);
+  const histMax = hist.length ? Math.max(...hist.map(h=>h.score)) : 5;
+  const activeCommits = (data.commitments||[]).filter(c=>c.status==='active');
+  const lJournal = S.journal.filter(e=>e.lKey===k).slice(-4).reverse();
+
+  const histHtml = hist.length > 1 ? `
+    <div class="card2"><div class="card-label">Score History</div>
+      <div class="history-chart">
+        ${hist.map((h,i)=>{
+          const cls = i===hist.length-1?'recent':i>hist.length-4?'mid':'old';
+          const pct = (h.score/5)*100;
+          return `<div class="h-bar-wrap" title="${h.score.toFixed(1)} — ${new Date(h.date).toLocaleDateString()}">
+            <div class="h-bar ${cls}" style="height:${pct}%"></div>
+            <div class="h-date">${new Date(h.date).toLocaleDateString('en',{month:'numeric',day:'numeric'})}</div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>` : '';
+
+  document.getElementById('lDetailContent').innerHTML = `
+    <div class="l-hero">
+      <div class="l-hero-top">
+        <div class="l-hero-left">
+          <div class="l-hero-icon">${def.icon}</div>
+          <div class="l-hero-name">${def.name}</div>
+          <div class="l-hero-tagline">${def.tagline}</div>
+        </div>
+        <div class="l-score-ring">
+          ${ringHTML(s,64,5.5)}
+          <div class="ring-label">${s!==null?trendArrow(k):'—'}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;">
+        <button class="btn btn-primary btn-sm" onclick="Assess.startSpotFor('${k}')">Assess Now</button>
+        <button class="btn btn-ghost btn-sm" onclick="openCommitModal('${k}')">+ Commitment</button>
+        <button class="btn btn-ghost btn-sm" onclick="openMyLModal('${k}')">✏ My ${def.name}</button>
       </div>
     </div>
-  );
-}
 
-function ConfirmDelete({name, onConfirm, onCancel}) {
-  return (
-    <Modal title="Delete Athlete" onClose={onCancel}>
-      <p style={{fontSize:16, marginBottom:24}}>Are you sure you want to permanently delete <strong>{name}</strong>?</p>
-      <p style={{color:"#ef4444", marginBottom:24}}>This cannot be undone.</p>
-      <div style={{display:"flex", gap:12, justifyContent:"flex-end"}}>
-        <button onClick={onCancel} style={{padding:"12px 24px", border:"none", background:"#ddd", borderRadius:10}}>Cancel</button>
-        <button onClick={onConfirm} style={{padding:"12px 28px", border:"none", background:"#ef4444", color:"#fff", borderRadius:10, fontWeight:700}}>Yes, Delete</button>
-      </div>
-    </Modal>
-  );
-}
-
-// ─── EDIT MODAL ───────────────────────────────────────────────────────────────
-function EditModal({person, onSave, onClose}) {
-  const [data, setData] = useState({...person, notes: person.notes || ""});
-
-  const updateScore = (key, value) => setData(prev => ({...prev, scores: {...prev.scores, [key]: Number(value)}}));
-
-  return (
-    <Modal title={data.id ? "Edit Athlete" : "Add New Athlete"} onClose={onClose}>
-      <input placeholder="Athlete Name *" value={data.name||""} onChange={e=>setData({...data,name:e.target.value})} style={{width:"100%", padding:14, fontSize:17, border:`2px solid ${C.border}`, borderRadius:10, marginBottom:12}} />
-      <input placeholder="Role / Team (optional)" value={data.role||""} onChange={e=>setData({...data,role:e.target.value})} style={{width:"100%", padding:14, fontSize:17, border:`2px solid ${C.border}`, borderRadius:10, marginBottom:20}} />
-
-      <div style={{marginBottom:20}}>
-        <div style={{fontWeight:700, color:C.orange, marginBottom:12}}>Score Each Virtue (0–3)</div>
-        {Object.values(VIRTUES).map(t => (
-          <div key={t.key} style={{marginBottom:16, padding:16, background:"#fff", border:`1px solid ${t.border}`, borderRadius:12}}>
-            <div style={{display:"flex", alignItems:"center", gap:12, marginBottom:8}}>
-              <span style={{fontSize:28}}>{t.icon}</span>
-              <div style={{flex:1, fontWeight:700, color:t.color}}>{t.label}</div>
-            </div>
-            <div style={{fontSize:13, color:"#555", marginBottom:10}}>{t.scoreMeaning}</div>
-            <div style={{display:"flex", gap:6}}>
-              {[0,1,2,3].map(n => (
-                <button key={n} onClick={()=>updateScore(t.key,n)} style={{flex:1, padding:"10px", borderRadius:8, background: data.scores[t.key]===n ? C.orange : "#f1f3f5", color: data.scores[t.key]===n ? "#fff" : "#333", fontWeight:700}}>
-                  {n}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div style={{marginBottom:20}}>
-        <div style={{fontWeight:700, marginBottom:8}}>Notes / Observations / Prayers</div>
-        <textarea value={data.notes} onChange={e=>setData({...data, notes:e.target.value})} placeholder="Key moments, growth areas, specific prayers..." style={{width:"100%", height:130, padding:14, border:`2px solid ${C.border}`, borderRadius:10, resize:"vertical"}} />
-      </div>
-
-      <div style={{display:"flex", gap:12, justifyContent:"flex-end"}}>
-        <button onClick={onClose} style={{padding:"12px 24px", border:"none", background:"#ddd", borderRadius:10}}>Cancel</button>
-        <button onClick={()=>onSave(data)} style={{padding:"12px 32px", border:"none", background:C.orange, color:"#fff", borderRadius:10, fontWeight:700}} disabled={!data.name?.trim()}>💾 Save Changes</button>
-      </div>
-    </Modal>
-  );
-}
-
-// ─── PERSON DETAIL ────────────────────────────────────────────────────────────
-function PersonDetail({person, onClose, onEdit}) {
-  const [tab, setTab] = useState("assess");
-  const combo = getCombo(person.scores);
-
-  return (
-    <Modal title={person.name} onClose={onClose}>
-      <div style={{display:"flex", justifyContent:"space-between", marginBottom:20}}>
-        <div>
-          <div style={{fontSize:52}}>{combo.icon}</div>
-          <div style={{fontSize:24, fontWeight:800, color:combo.color}}>{combo.label}</div>
-        </div>
-        <button onClick={()=>{ onEdit(person); onClose(); }} style={{background:C.orange, color:"#fff", border:"none", padding:"10px 22px", borderRadius:10, fontWeight:700}}>✏ Edit</button>
-      </div>
-
-      <div style={{marginBottom:24}}>
-        <div style={{display:"flex", justifyContent:"space-between", fontSize:14, marginBottom:8}}>
-          <span>Character Progress</span>
-          <span>{combo.progress}%</span>
-        </div>
-        <div className="progress-bar">
-          <div className="progress-fill" style={{width: `${combo.progress}%`, background: combo.progress > 80 ? "linear-gradient(90deg,#00b36b,#34d399)" : combo.progress > 50 ? "linear-gradient(90deg,#ff8c00,#ffaa00)" : "#dc3545"}} />
-        </div>
-        <div style={{fontSize:13, color:C.textMuted, marginTop:6}}>
-          Last updated: {person.lastUpdated ? new Date(person.lastUpdated).toLocaleDateString() : "Never"}
-        </div>
-      </div>
-
-      <div style={{display:"flex", borderBottom:"3px solid #ff8c00", marginBottom:20}}>
-        {["assess","develop","notes"].map(t => (
-          <button key={t} onClick={()=>setTab(t)} style={{flex:1, padding:"14px", fontWeight:700, background:tab===t?C.orange:"#f1f3f5", color:tab===t?"#fff":"#333", border:"none"}}>
-            {t==="assess"?"📊 Profile":t==="develop"?"🛠 Develop":"📝 Notes"}
-          </button>
-        ))}
-      </div>
-
-      {tab==="assess" && Object.entries(person.scores).map(([k,v]) => {
-        const t = VIRTUES[k];
-        const showHas = v >= 2;
-        return (
-          <div key={k} style={{marginBottom:20, background:"#fff", border:`2px solid ${t.border}`, borderRadius:14, overflow:"hidden"}}>
-            <div style={{background:t.bg, padding:"16px 20px", display:"flex", alignItems:"center", gap:16}}>
-              <span style={{fontSize:42}}>{t.icon}</span>
-              <div style={{flex:1}}><div style={{fontSize:21, fontWeight:800, color:t.color}}>{t.label}</div></div>
-              <span style={{fontSize:18, fontWeight:700}}>{v}/3</span>
-            </div>
-            <div style={{padding:"20px"}}>
-              {(showHas ? t.strong : t.weak).map((s,i) => (
-                <div key={i} style={{marginBottom:6}}>{showHas?"→":"–"} {s}</div>
-              ))}
-            </div>
-          </div>
-        );
-      })}
-
-      {tab==="develop" && (
-        <div>
-          {Object.entries(person.scores).map(([k,v]) => {
-            const t = VIRTUES[k];
-            return (
-              <div key={k} style={{marginBottom:20, background:"#fff", border:`2px solid ${t.border}`, borderRadius:14, overflow:"hidden"}}>
-                <div style={{background:t.bg, padding:"14px 20px", display:"flex", alignItems:"center", gap:12}}>
-                  <span style={{fontSize:28}}>{t.icon}</span>
-                  <div style={{fontSize:18, fontWeight:800, color:t.color, flex:1}}>{t.label}</div>
-                  <span style={{fontSize:14, color:C.textMuted, background:"#fff", padding:"4px 10px", borderRadius:20, fontWeight:700}}>{SCORE_LABELS[v]}</span>
-                </div>
-                <div style={{padding:"16px 20px"}}>
-                  {t.develop.map((step,i) => (
-                    <div key={i} style={{display:"flex", gap:12, marginBottom:10, alignItems:"flex-start"}}>
-                      <span style={{background:C.orange, color:"#fff", borderRadius:"50%", width:22, height:22, display:"flex", alignItems:"center", justifyContent:"center", fontSize:12, fontWeight:800, flexShrink:0}}>{i+1}</span>
-                      <span style={{fontSize:14, color:C.text, lineHeight:1.5}}>{step}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {tab==="notes" && (
-        <div style={{background:"#fff", border:`1px solid ${C.border}`, borderRadius:12, padding:24, minHeight:200, whiteSpace:"pre-wrap", fontSize:15}}>
-          {person.notes || "No notes added yet."}
-        </div>
-      )}
-    </Modal>
-  );
-}
-
-const BLANK_ATHLETE = { id:"", name:"", role:"", notes:"", scores:{L:1,P:1,S:1,G:1,H:1,Gr:1,J:1}, lastUpdated: null };
-
-// ─── MAIN APP ─────────────────────────────────────────────────────────────────
-function App() {
-  const [tab, setTab] = useState("athletes");
-  const [athletes, setAthletes] = useState(() => load("awaygame_athletes_v1", []));
-  const [editing, setEditing] = useState(null);
-  const [viewing, setViewing] = useState(null);
-  const [deleteConfirm, setDeleteConfirm] = useState(null);
-
-  function saveAthlete(p) {
-    const updated = {...p, id: p.id || uid(), lastUpdated: Date.now()};
-    const next = p.id ? athletes.map(x => x.id === p.id ? updated : x) : [...athletes, updated];
-    setAthletes(next);
-    save("awaygame_athletes_v1", next);
-    setEditing(null);
-  }
-
-  function deleteAthlete(id) {
-    const next = athletes.filter(a => a.id !== id);
-    setAthletes(next);
-    save("awaygame_athletes_v1", next);
-    setDeleteConfirm(null);
-    if (viewing && viewing.id === id) setViewing(null);
-  }
-
-  const teamStats = calculateTeamProgress(athletes);
-
-  return (
-    <div style={{minHeight:"100vh", background:"#f8f9fa"}}>
-      {/* HEADER */}
-      <div style={{background:"#fff", borderBottom:"4px solid #ff8c00", padding:"0 24px", height:76, display:"flex", alignItems:"center", justifyContent:"space-between", boxShadow:"0 3px 12px rgba(0,0,0,0.1)"}}>
-        <div>
-          <div style={{fontFamily:"'Barlow Condensed',sans-serif", fontWeight:900, fontSize:32, letterSpacing:1.5, color:C.orange}}>AWAY GAME</div>
-          <div style={{fontSize:13, color:"#555"}}>Christian Parent’s Playbook</div>
-        </div>
-        <div style={{display:"flex", gap:8}}>
-          <button onClick={()=>setTab("athletes")} style={{padding:"10px 22px", borderRadius:10, background:tab==="athletes"?C.orange:"#fff", color:tab==="athletes"?"#fff":"#333", fontWeight:700, border:"2px solid #ff8c00"}}>👥 My Athletes</button>
-          <button onClick={()=>setTab("playbook")} style={{padding:"10px 22px", borderRadius:10, background:tab==="playbook"?C.orange:"#fff", color:tab==="playbook"?"#fff":"#333", fontWeight:700, border:"2px solid #ff8c00"}}>📖 The Playbook</button>
-        </div>
-      </div>
-
-      {tab === "athletes" && (
-        <div style={{padding:24}}>
-          {/* TEAM PROGRESS DASHBOARD */}
-          {athletes.length > 0 && (
-            <div className="team-card" style={{marginBottom:32}}>
-              <div style={{fontSize:20, fontWeight:800, marginBottom:16, color:C.orange}}>Team Progress Overview</div>
-              <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(180px, 1fr))", gap:20}}>
-                <div>
-                  <div style={{fontSize:13, color:C.textMuted}}>Team Average Score</div>
-                  <div style={{fontSize:32, fontWeight:800, color:C.orange}}>{teamStats.avgScore}</div>
-                  <div style={{fontSize:13}}>out of 3.0</div>
-                </div>
-                <div>
-                  <div style={{fontSize:13, color:C.textMuted}}>Strong Virtues</div>
-                  <div style={{fontSize:32, fontWeight:800, color: teamStats.strongPercent > 70 ? C.green : C.orange}}>{teamStats.strongPercent}%</div>
-                </div>
-                <div>
-                  <div style={{fontSize:13, color:C.textMuted}}>Athletes Tracked</div>
-                  <div style={{fontSize:32, fontWeight:800}}>{teamStats.totalAthletes}</div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:28}}>
-            <h1 style={{fontSize:28, fontWeight:800}}>My Athletes</h1>
-            <button onClick={()=>setEditing(BLANK_ATHLETE)} style={{background:C.orange, color:"#fff", border:"none", padding:"12px 28px", borderRadius:12, fontWeight:700}}>＋ Add Athlete</button>
-          </div>
-
-          {athletes.length === 0 ? (
-            <div style={{textAlign:"center", padding:"120px 20px", color:"#666"}}>
-              <div style={{fontSize:80}}>⚽️🏀🏈</div>
-              <div style={{fontSize:24, margin:"20px 0"}}>Start building your team’s character</div>
-              <button onClick={()=>setEditing(BLANK_ATHLETE)} style={{background:C.orange, color:"#fff", padding:"14px 36px", borderRadius:12, fontSize:17, fontWeight:700}}>Add Your First Athlete</button>
-            </div>
-          ) : (
-            <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(310px, 1fr))", gap:20}}>
-              {athletes.map(p => {
-                const combo = getCombo(p.scores);
-                return (
-                  <div key={p.id} style={{background:"#fff", border:`1px solid ${C.border}`, borderRadius:16, padding:22, boxShadow:"0 6px 20px rgba(0,0,0,0.07)", position:"relative"}}>
-                    <button 
-                      onClick={(e)=>{e.stopPropagation(); setDeleteConfirm(p);}} 
-                      className="delete-btn" 
-                      style={{position:"absolute", top:12, right:12}}
-                    >
-                      🗑
-                    </button>
-                    
-                    <div onClick={()=>setViewing(p)} style={{cursor:"pointer"}}>
-                      <div style={{fontSize:22, fontWeight:800, marginBottom:8}}>{p.name}</div>
-                      {p.role && <div style={{color:C.textSub, marginBottom:12}}>{p.role}</div>}
-                      
-                      <div style={{display:"flex", gap:8, flexWrap:"wrap", marginBottom:16}}>
-                        {Object.entries(p.scores).map(([k,v]) => (
-                          <div key={k} style={{background:VIRTUES[k].bg, padding:"6px 10px", borderRadius:8, fontSize:14}}>{VIRTUES[k].icon} {v}</div>
-                        ))}
-                      </div>
-
-                      <div style={{marginBottom:12}}>
-                        <div className="progress-bar">
-                          <div className="progress-fill" style={{width: `${combo.progress}%`, background: combo.progress > 80 ? "linear-gradient(90deg,#00b36b,#34d399)" : combo.progress > 50 ? "linear-gradient(90deg,#ff8c00,#ffaa00)" : "#dc3545"}} />
-                        </div>
-                      </div>
-
-                      <div style={{fontSize:13, color:C.textMuted}}>Last updated: {p.lastUpdated ? new Date(p.lastUpdated).toLocaleDateString() : "Never"}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      )}
-
-      {tab === "playbook" && (
-        <div style={{padding:24, maxWidth:820, margin:"0 auto"}}>
-          <h2 style={{color:C.orange, marginBottom:8}}>The Seven Virtues</h2>
-          <p style={{color:C.textSub, marginBottom:32}}>Fruit of the Spirit applied to youth sports.</p>
-          {Object.values(VIRTUES).map(t => (
-            <div key={t.key} style={{marginBottom:24, background:"#fff", border:`1px solid ${t.border}`, borderRadius:16, padding:24}}>
-              <div style={{display:"flex", alignItems:"center", gap:16}}>
-                <span style={{fontSize:48}}>{t.icon}</span>
-                <div>
-                  <div style={{fontSize:22, fontWeight:800, color:t.color}}>{t.label}</div>
-                  <div style={{color:C.textSub}}>"{t.tagline}"</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {editing && <EditModal person={editing} onSave={saveAthlete} onClose={()=>setEditing(null)} />}
-      {viewing && <PersonDetail person={viewing} onClose={()=>setViewing(null)} onEdit={p=>{setViewing(null); setEditing(p);}} />}
-      {deleteConfirm && <ConfirmDelete name={deleteConfirm.name} onConfirm={()=>deleteAthlete(deleteConfirm.id)} onCancel={()=>setDeleteConfirm(null)} />}
+    <div class="principle-wrap">
+      <div class="principle-kicker">The Principle</div>
+      <div class="principle-text">${def.principle}</div>
     </div>
-  );
+
+    <div class="card2">
+      <div class="card-label">In Practice</div>
+      <ul class="in-practice-list">${def.inPractice.map(i=>`<li>${i}</li>`).join('')}</ul>
+    </div>
+
+    <div class="warn-box">
+      <div class="warn-kicker">Warning Sign</div>
+      <div class="warn-text">${def.warningSign}</div>
+    </div>
+
+    ${histHtml}
+
+    ${data.myMeaning || data.myImpl ? `
+    <div class="card2"><div class="card-label">My Definition</div>
+      ${data.myMeaning?`<div class="my-def-block"><div class="my-def-kicker">What ${def.name} means to me</div><div class="my-def-text">${esc(data.myMeaning)}</div></div>`:''}
+      ${data.myImpl?`<div class="my-def-block"><div class="my-def-kicker">How I'll live it out</div><div class="my-def-text">${esc(data.myImpl)}</div></div>`:''}
+    </div>` : `
+    <div class="card2"><div class="card-label">My Definition</div>
+      <div style="font-size:.85rem;color:var(--text3);margin-bottom:10px;font-style:italic;">You haven't defined what ${def.name} means to you yet.</div>
+      <button class="btn btn-ghost btn-sm" onclick="openMyLModal('${k}')">✏ Define My ${def.name}</button>
+    </div>`}
+
+    <div class="card2"><div class="card-label">Commitments</div>
+      ${activeCommits.length?activeCommits.map(c=>`
+        <div class="commit-card active-commit" style="margin-bottom:8px;">
+          <div class="commit-text">${esc(c.text)}</div>
+          <div class="commit-meta">${new Date(c.created).toLocaleDateString()}</div>
+          <button class="btn btn-ghost btn-sm" onclick="openCommitClose('${c.id}')" style="margin-top:8px;">Close Out →</button>
+        </div>`).join(''):`<div style="font-size:.85rem;color:var(--text3);margin-bottom:10px;">No active commitment.</div>`}
+      <button class="btn btn-ghost btn-sm" onclick="openCommitModal('${k}')">+ Set Commitment</button>
+    </div>
+
+    <div class="card2"><div class="card-label">Journal — ${def.name}</div>
+      ${lJournal.length?lJournal.map(e=>`
+        <div style="padding:8px 0;border-bottom:1px solid var(--border);">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:.62rem;color:var(--text3);margin-bottom:4px;">${new Date(e.date).toLocaleDateString()}</div>
+          <div style="font-size:.88rem;color:var(--text2);line-height:1.5;">${esc(e.entry)}</div>
+        </div>`).join(''):`<div style="font-size:.85rem;color:var(--text3);margin-bottom:10px;">No journal entries for ${def.name} yet.</div>`}
+      <button class="btn btn-ghost btn-sm" onclick="JournalMod.openNew('${k}')" style="margin-top:${lJournal.length?'10':'0'}px;">+ Journal Entry</button>
+    </div>`;
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(React.createElement(App));
+// ─── ASSESSMENT ──────────────────────────────────────────────────────────────
+
+const Assess = {
+  queue:[], idx:0, responses:{}, notes:{}, mode:'full',
+
+  startFull() {
+    this.queue=[...L_KEYS]; this._go('full');
+  },
+  pickSpot() {
+    const el = document.getElementById('assessActive');
+    document.getElementById('assessHome').style.display='none';
+    el.style.display='block';
+    el.innerHTML = `
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:3px;color:var(--text3);text-transform:uppercase;margin-bottom:14px;">Choose an L</div>
+      ${L_KEYS.map(k=>`<button class="btn btn-ghost btn-block" style="margin-bottom:8px;text-align:left;justify-content:flex-start;gap:10px;" onclick="Assess.startSpotFor('${k}')">
+        <span style="font-size:1.1rem;">${LS[k].icon}</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;">${LS[k].name}</span>
+        <span style="color:var(--text3);font-size:.78rem;"> — ${LS[k].tagline}</span>
+      </button>`).join('')}
+      <button class="btn btn-ghost btn-sm btn-block" onclick="Assess.cancel()">Cancel</button>`;
+  },
+  startSpotFor(k) {
+    this.queue=[k]; this._go('spot');
+    // Make sure assess tab is visible
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('sec-assess').classList.add('active');
+    document.querySelectorAll('.tab-btn')[2].classList.add('active');
+  },
+  _go(mode) {
+    this.mode=mode; this.idx=0; this.responses={}; this.notes={};
+    document.getElementById('assessHome').style.display='none';
+    document.getElementById('assessActive').style.display='block';
+    this.render();
+  },
+  cancel() {
+    document.getElementById('assessHome').style.display='block';
+    document.getElementById('assessActive').style.display='none';
+  },
+  render() {
+    const k = this.queue[this.idx];
+    const def = LS[k];
+    const total = this.queue.length;
+    const pct = (this.idx/total)*100;
+    const resp = this.responses[k] || new Array(def.questions.length).fill(0);
+    const allAnswered = resp.every(r=>r>0);
+
+    document.getElementById('assessActive').innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <span style="font-size:1.4rem;">${def.icon}</span>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--text3);text-transform:uppercase;">${this.idx+1} of ${total} · ${def.name}</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:900;">${def.name}</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="Assess.cancel()" style="margin-left:auto;">Cancel</button>
+      </div>
+      <div class="assess-progress"><div class="assess-progress-fill" style="width:${pct}%"></div></div>
+      <div style="background:rgba(180,130,26,.06);border:1px solid rgba(180,130,26,.18);border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:16px;font-size:.82rem;color:var(--text2);font-style:italic;">
+        Rate your actual behavior over the last 2–3 weeks. 1 = Not yet. 5 = Consistently.
+      </div>
+      ${def.questions.map((q,qi)=>`
+        <div class="assess-q-card">
+          <div class="assess-q-source">${q.src}</div>
+          <div class="assess-q-text">${q.q}</div>
+          <div class="rating-row">
+            ${RATING.map((lbl,vi)=>`
+              <button class="rating-btn${resp[qi]===vi+1?' selected':''}" onclick="Assess.rate('${k}',${qi},${vi+1})">
+                <span class="rating-num">${vi+1}</span>
+                <span class="rating-lbl">${lbl}</span>
+              </button>`).join('')}
+          </div>
+        </div>`).join('')}
+      <label>Notes (optional)</label>
+      <textarea id="assessNotes" placeholder="What's driving this score? Be specific." style="min-height:70px;">${this.notes[k]||''}</textarea>
+      <div id="assessNextWrap" style="${allAnswered?'':'display:none;'}">
+        <button class="btn btn-primary btn-block" onclick="Assess.next()">
+          ${this.idx+1>=total?'Complete Assessment →':'Next: '+LS[this.queue[this.idx+1]]?.name+' →'}
+        </button>
+      </div>`;
+  },
+  rate(k, qi, val) {
+    if (!this.responses[k]) this.responses[k] = new Array(LS[k].questions.length).fill(0);
+    this.responses[k][qi] = val;
+    // Update buttons
+    const cards = document.querySelectorAll('.assess-q-card');
+    if (cards[qi]) {
+      cards[qi].querySelectorAll('.rating-btn').forEach((b,i)=>b.classList.toggle('selected',i===val-1));
+    }
+    if (this.responses[k].every(r=>r>0)) {
+      const nw = document.getElementById('assessNextWrap');
+      if (nw) nw.style.display='block';
+    }
+  },
+  next() {
+    const k = this.queue[this.idx];
+    this.notes[k] = (document.getElementById('assessNotes')||{}).value||'';
+    if (!this.responses[k]||!this.responses[k].every(r=>r>0)) { alert('Answer all questions to continue.'); return; }
+    this.idx++;
+    if (this.idx >= this.queue.length) this.finish();
+    else this.render();
+  },
+  finish() {
+    const date = new Date().toISOString();
+    const saved = [];
+    this.queue.forEach(k => {
+      const resp = this.responses[k];
+      if (!resp||!resp.every(r=>r>0)) return;
+      const s = avgQ(resp);
+      const prev = S.ls[k].scores.length ? S.ls[k].scores[S.ls[k].scores.length-1].score : null;
+      S.ls[k].scores.push({date, score:s, responses:resp, notes:this.notes[k]||''});
+      saved.push({k, s, prev});
+    });
+    App.save();
+    const weak = saved.reduce((a,b)=>a.s<b.s?a:b, saved[0]);
+    document.getElementById('assessActive').innerHTML = `
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:3px;color:var(--green3);margin-bottom:6px;">ASSESSMENT COMPLETE</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:900;">Here's where you stand.</div>
+      </div>
+      <div class="card2" style="margin-bottom:14px;">
+        ${saved.map(({k,s,prev})=>{
+          const delta = prev!==null?s-prev:null;
+          return `<div class="result-row">
+            <span style="font-size:1.1rem;width:24px;text-align:center;">${LS[k].icon}</span>
+            <span class="result-name">${LS[k].name}</span>
+            <span class="result-score" style="color:${ringColor(s)};">${s.toFixed(1)}</span>
+            <span class="result-delta" style="color:${delta===null?'var(--text3)':delta>0?'var(--green3)':'var(--red3)'};">
+              ${delta===null?'baseline':delta>0?'+'+delta.toFixed(1):delta.toFixed(1)}
+            </span>
+          </div>`;
+        }).join('')}
+      </div>
+      ${weak?`<div class="warn-box" style="margin-bottom:14px;">
+        <div class="warn-kicker">Your Focus Right Now</div>
+        <div class="warn-text"><strong>${LS[weak.k].name}</strong> is your lowest score (${weak.s.toFixed(1)}/5).<br>${LS[weak.k].warningSign}</div>
+        <button class="btn btn-ghost btn-sm" onclick="Assess.done();openLDetail('${weak.k}')" style="margin-top:8px;">Go deeper on ${LS[weak.k].name} →</button>
+      </div>`:''}
+      <button class="btn btn-primary btn-block" onclick="Assess.done()">Done</button>`;
+    Home.render(); renderLList();
+  },
+  done() {
+    document.getElementById('assessHome').style.display='block';
+    document.getElementById('assessActive').style.display='none';
+    updateLastAssessNote();
+  }
+};
+
+function updateLastAssessNote() {
+  const el = document.getElementById('lastAssessNote'); if(!el) return;
+  const all = L_KEYS.flatMap(k=>S.ls[k].scores);
+  if (!all.length) { el.innerHTML=''; return; }
+  const last = all.sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
+  el.innerHTML=`<div style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:1.5px;color:var(--text3);margin-bottom:12px;">Last assessment: ${new Date(last.date).toLocaleDateString()}</div>`;
+}
+
+// ─── JOURNAL ─────────────────────────────────────────────────────────────────
+
+let jFilterKey = null;
+
+const JournalMod = {
+  renderFilters() {
+    document.getElementById('journalFilters').innerHTML =
+      `<button class="l-pill active" onclick="JournalMod.setFilter(null,this)">All</button>` +
+      L_KEYS.map(k=>`<button class="l-pill" onclick="JournalMod.setFilter('${k}',this)">${LS[k].icon} ${LS[k].name}</button>`).join('');
+  },
+  setFilter(k, btn) {
+    jFilterKey=k;
+    document.querySelectorAll('#journalFilters .l-pill').forEach(b=>b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    this.render();
+  },
+  render() {
+    const el = document.getElementById('journalList');
+    let entries = [...S.journal].reverse();
+    if (jFilterKey) entries = entries.filter(e=>e.lKey===jFilterKey);
+    if (!entries.length) {
+      el.innerHTML=`<div class="empty-state"><div class="empty-icon">✍</div><div class="empty-text">No entries${jFilterKey?' for '+LS[jFilterKey].name:''}.<br>Reflection is where growth becomes real.</div><button class="btn btn-primary btn-sm" onclick="JournalMod.openNew(${jFilterKey?`'${jFilterKey}'`:''})">+ First Entry</button></div>`;
+      return;
+    }
+    el.innerHTML = entries.map(e=>`
+      <div class="journal-card${e.lKey?' tagged':''}">
+        <div class="journal-meta">
+          ${e.lKey?`<span class="badge badge-gold">${LS[e.lKey].name}</span>`:''}
+          <span class="journal-date">${new Date(e.date).toLocaleDateString()}</span>
+          <button class="journal-del" onclick="JournalMod.del('${e.id}')">✕</button>
+        </div>
+        <div class="journal-text">${esc(e.entry)}</div>
+        ${e.connection?`<div class="journal-connection">${esc(e.connection)}</div>`:''}
+      </div>`).join('');
+  },
+  openNew(preselect) {
+    const pills = document.getElementById('jLPills');
+    pills.innerHTML = `<button class="l-pill${!preselect?' active':''}" data-lkey="" onclick="JournalMod.selL(null,this)">General</button>` +
+      L_KEYS.map(k=>`<button class="l-pill${preselect===k?' active':''}" data-lkey="${k}" onclick="JournalMod.selL('${k}',this)">${LS[k].name}</button>`).join('');
+    document.getElementById('jText').value='';
+    document.getElementById('jConnect').value='';
+    openModal('modalJournal');
+  },
+  selL(k, btn) {
+    document.querySelectorAll('#jLPills .l-pill').forEach(b=>b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+  },
+  save() {
+    const text = document.getElementById('jText').value.trim();
+    if (!text) { alert('Write something first.'); return; }
+    const activeL = document.querySelector('#jLPills .l-pill.active');
+    const lKey = activeL ? (activeL.dataset.lkey||null) : null;
+    S.journal.push({id:'J'+Date.now(), date:new Date().toISOString(), lKey, entry:text, connection:document.getElementById('jConnect').value.trim()});
+    App.save(); closeModal('modalJournal'); this.render(); Home.recent();
+  },
+  del(id) {
+    if (!confirm('Delete this entry?')) return;
+    S.journal = S.journal.filter(e=>e.id!==id);
+    App.save(); this.render();
+  }
+};
+
+// ─── CHECK-IN ────────────────────────────────────────────────────────────────
+
+const CheckIn = {
+  render() {
+    const el = document.getElementById('checkinContent');
+    const last = S.checkIns.length ? S.checkIns[S.checkIns.length-1] : null;
+    const due = !last || new Date(last.date) < new Date(Date.now()-7*864e5);
+    const hist = [...S.checkIns].reverse().slice(0,6);
+    el.innerHTML = `
+      ${due
+        ? this.buildForm()
+        : `<div class="checkin-status-done" style="text-align:left;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <div>
+              <div class="checkin-status-kicker" style="color:var(--green3);">This Week Complete ✓</div>
+              <div style="font-size:.82rem;color:var(--text2);">${new Date(last.date).toLocaleDateString()}</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="CheckIn.force()">Do Another</button>
+          </div>`
+      }
+      ${hist.length?`<div class="card"><div class="card-label">Check-In History</div>
+        ${hist.map(ci=>`<div class="checkin-hist-item">
+          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:.65rem;color:var(--text3);">${new Date(ci.date).toLocaleDateString()}</span>
+            ${ci.strongL?`<span class="badge badge-green">${LS[ci.strongL].name}</span>`:''}
+            ${ci.weakL?`<span class="badge badge-red">${LS[ci.weakL].name} — Focus</span>`:''}
+          </div>
+          ${ci.whoLed?`<div style="font-size:.85rem;color:var(--text2);">${esc(ci.whoLed)}</div>`:''}
+          ${ci.commitment?`<div style="font-size:.82rem;color:var(--gold2);font-style:italic;">"${esc(ci.commitment)}"</div>`:''}
+        </div>`).join('')}
+      </div>`:''}`;
+  },
+  buildForm() {
+    const lPills = (id,name) => L_KEYS.map(k=>`<button class="l-pill" data-sel="${id}" data-key="${k}" onclick="CheckIn.selL('${id}','${k}',this)">${LS[k].name}</button>`).join('');
+    return `<div class="card"><div class="card-label">This Week's Check-In</div>
+      <p style="font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:16px;">5–10 minutes. Honest answers only. This is for you.</p>
+      <label>Which L did you live well this week?</label>
+      <div class="l-pills" id="ciStrong">${lPills('ciStrong','strong')}</div>
+      <label>Which L did you fall short on?</label>
+      <div class="l-pills" id="ciWeak">${lPills('ciWeak','weak')}</div>
+      <label>Who did you lead this week? Name them specifically.</label>
+      <textarea id="ciWho" placeholder="Name the people. Name the moments. If you can't name them, that's data." style="min-height:70px;"></textarea>
+      <label>One thing you'd do differently.</label>
+      <textarea id="ciDiff" placeholder="Be ruthlessly honest. This is where growth actually happens." style="min-height:70px;"></textarea>
+      <label>Your one specific commitment for next week.</label>
+      <textarea id="ciCommit" placeholder="Not a goal. A specific, observable action." style="min-height:70px;"></textarea>
+      <button class="btn btn-primary btn-block" onclick="CheckIn.save()">Save Check-In</button>
+    </div>`;
+  },
+  force() {
+    document.getElementById('checkinContent').innerHTML = this.buildForm() + document.getElementById('checkinContent').innerHTML;
+  },
+  selL(group, key, btn) {
+    document.querySelectorAll(`#${group} .l-pill`).forEach(b=>b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+  },
+  save() {
+    const strongBtn = document.querySelector('#ciStrong .l-pill.active');
+    const weakBtn   = document.querySelector('#ciWeak .l-pill.active');
+    S.checkIns.push({
+      id:'CI'+Date.now(), date:new Date().toISOString(),
+      strongL: strongBtn?strongBtn.dataset.key:null,
+      weakL:   weakBtn?weakBtn.dataset.key:null,
+      whoLed:  (document.getElementById('ciWho')||{}).value?.trim()||'',
+      diff:    (document.getElementById('ciDiff')||{}).value?.trim()||'',
+      commitment:(document.getElementById('ciCommit')||{}).value?.trim()||''
+    });
+    App.save(); this.render(); Home.alert();
+  }
+};
+
+// ─── COMMITMENTS ─────────────────────────────────────────────────────────────
+
+function openCommitModal(preselect) {
+  const el = document.getElementById('commitLPills');
+  el.innerHTML = L_KEYS.map(k=>`<button class="l-pill${preselect===k?' active':''}" data-lkey="${k}" onclick="selCommitL('${k}',this)">${LS[k].name}</button>`).join('');
+  document.getElementById('commitText').value='';
+  openModal('modalCommit');
+}
+function selCommitL(k,btn) {
+  document.querySelectorAll('#commitLPills .l-pill').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+}
+function saveCommitment() {
+  const activeL = document.querySelector('#commitLPills .l-pill.active');
+  if (!activeL) { alert('Select an L first.'); return; }
+  const k = activeL.dataset.lkey;
+  const text = document.getElementById('commitText').value.trim();
+  if (!text) { alert('Write out your commitment first.'); return; }
+  if (!S.ls[k].commitments) S.ls[k].commitments=[];
+  S.ls[k].commitments.push({id:'C'+Date.now(),lKey:k,text,created:new Date().toISOString(),status:'active',outcome:'',learning:''});
+  App.save(); closeModal('modalCommit'); Home.commit();
+}
+function openCommitClose(id) {
+  document.getElementById('closingCommitId').value=id;
+  document.getElementById('commitOutcome').value='';
+  document.getElementById('commitLearn').value='';
+  openModal('modalCommitClose');
+}
+function closeCommit(result) {
+  const id=document.getElementById('closingCommitId').value;
+  L_KEYS.forEach(k=>{
+    const c=(S.ls[k].commitments||[]).find(c=>c.id===id);
+    if(c){c.status=result;c.outcome=document.getElementById('commitOutcome').value.trim();c.learning=document.getElementById('commitLearn').value.trim();c.closedDate=new Date().toISOString();}
+  });
+  App.save(); closeModal('modalCommitClose'); Home.commit();
+}
+
+// ─── MY L DEFINITION ─────────────────────────────────────────────────────────
+
+function openMyLModal(k) {
+  document.getElementById('myLTitle').textContent='My '+LS[k].name;
+  document.getElementById('myLKey').value=k;
+  document.getElementById('myLMeaning').value=S.ls[k].myMeaning||'';
+  document.getElementById('myLImpl').value=S.ls[k].myImpl||'';
+  openModal('modalMyL');
+}
+function saveMyL() {
+  const k=document.getElementById('myLKey').value;
+  S.ls[k].myMeaning=document.getElementById('myLMeaning').value.trim();
+  S.ls[k].myImpl=document.getElementById('myLImpl').value.trim();
+  App.save(); closeModal('modalMyL');
+  if (document.getElementById('lDetailView').style.display!=='none') renderLDetail(k);
+}
+
+// ─── SETTINGS ────────────────────────────────────────────────────────────────
+
+const Settings = {
+  populate() {
+    const p=S.profile;
+    const f={'sName':'name','sRank':'rank','sDept':'dept','sYears':'years'};
+    Object.entries(f).forEach(([id,key])=>{const el=document.getElementById(id);if(el)el.value=p[key]||'';});
+  },
+  save() {
+    S.profile.name=(document.getElementById('sName')||{}).value?.trim()||'';
+    S.profile.rank=(document.getElementById('sRank')||{}).value?.trim()||'';
+    S.profile.dept=(document.getElementById('sDept')||{}).value?.trim()||'';
+    S.profile.years=(document.getElementById('sYears')||{}).value?.trim()||'';
+    App.save(); Home.welcome();
+  }
+};
+
+// ─── MODALS ──────────────────────────────────────────────────────────────────
+
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(el=>{
+  el.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+});
+
+// ─── ESCAPE ──────────────────────────────────────────────────────────────────
+
+function esc(s){
+  if(!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+
+App.init();
 </script>
 </body>
 </html>
